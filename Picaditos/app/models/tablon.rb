@@ -1,0 +1,2 @@
+class Tablon < ApplicationRecord
+end

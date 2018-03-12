@@ -10,11 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312193257) do
+ActiveRecord::Schema.define(version: 20180312194853) do
+
+  create_table "anuncios", force: :cascade do |t|
+    t.string "tipo"
+    t.string "enlace"
+    t.date "fecha_inicio"
+    t.date "fecha_fin"
+    t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "canchas", force: :cascade do |t|
     t.binary "disponibilidad"
     t.integer "precio"
+    t.integer "calificacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "equipos", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "nivel"
+    t.integer "calificacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "estadisticas", force: :cascade do |t|
+    t.integer "partidos_ganados"
+    t.integer "partidos_perdidos"
+    t.integer "partidos_empatados"
+    t.integer "puntos_ganados"
+    t.integer "goles_anotados"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tablons", force: :cascade do |t|
+    t.string "titulo_tablon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "torneos", force: :cascade do |t|
+    t.date "fecha"
+    t.string "premio"
     t.integer "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
