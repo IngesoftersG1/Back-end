@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312193257) do
+ActiveRecord::Schema.define(version: 20180312195422) do
 
   create_table "canchas", force: :cascade do |t|
     t.binary "disponibilidad"
@@ -18,6 +18,20 @@ ActiveRecord::Schema.define(version: 20180312193257) do
     t.integer "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "usuario_id"
+    t.integer "ubicacion_id"
+    t.index ["ubicacion_id"], name: "index_canchas_on_ubicacion_id"
+    t.index ["usuario_id"], name: "index_canchas_on_usuario_id"
+  end
+
+  create_table "mensajes", force: :cascade do |t|
+    t.text "contenido"
+    t.integer "usuario_id"
+    t.date "fecha"
+    t.text "asunto"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["usuario_id"], name: "index_mensajes_on_usuario_id"
   end
 
   create_table "ubicacions", force: :cascade do |t|
