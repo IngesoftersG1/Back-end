@@ -10,9 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180312195422) do
-=======
 ActiveRecord::Schema.define(version: 20180312194853) do
 
   create_table "anuncios", force: :cascade do |t|
@@ -24,7 +21,6 @@ ActiveRecord::Schema.define(version: 20180312194853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
->>>>>>> 29d6247402cf673146cb291a4f1c41616d0d85dc
 
   create_table "canchas", force: :cascade do |t|
     t.binary "disponibilidad"
