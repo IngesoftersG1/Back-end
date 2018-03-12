@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312201706) do
+ActiveRecord::Schema.define(version: 20180312204333) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 20180312201706) do
   end
 
   create_table "usuarios", force: :cascade do |t|
-    t.string "tipo_de_documento"
     t.string "nombres"
     t.string "apellidos"
     t.date "fecha_nacimiento"
@@ -136,6 +135,7 @@ ActiveRecord::Schema.define(version: 20180312201706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ubicacion_id"
+    t.string "user_name"
     t.index ["ubicacion_id"], name: "index_usuarios_on_ubicacion_id"
   end
 
