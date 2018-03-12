@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descripcion: 
+  min_jugadores: 1
+  ubicacion: one
+  usuario: one
+
+two:
+  descripcion: 
+  min_jugadores: 1
+  ubicacion: two
+  usuario: two

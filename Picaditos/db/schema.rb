@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312194853) do
+ActiveRecord::Schema.define(version: 20180312200542) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -34,14 +34,15 @@ ActiveRecord::Schema.define(version: 20180312194853) do
     t.index ["usuario_id"], name: "index_canchas_on_usuario_id"
   end
 
-  create_table "mensajes", force: :cascade do |t|
-    t.text "contenido"
+  create_table "deportes", force: :cascade do |t|
+    t.text "descripcion"
+    t.integer "min_jugadores"
+    t.integer "ubicacion_id"
     t.integer "usuario_id"
-    t.date "fecha"
-    t.text "asunto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["usuario_id"], name: "index_mensajes_on_usuario_id"
+    t.index ["ubicacion_id"], name: "index_deportes_on_ubicacion_id"
+    t.index ["usuario_id"], name: "index_deportes_on_usuario_id"
   end
 
   create_table "equipos", force: :cascade do |t|
@@ -60,6 +61,30 @@ ActiveRecord::Schema.define(version: 20180312194853) do
     t.integer "goles_anotados"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mensajes", force: :cascade do |t|
+    t.text "contenido"
+    t.integer "usuario_id"
+    t.date "fecha"
+    t.text "asunto"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["usuario_id"], name: "index_mensajes_on_usuario_id"
+  end
+
+  create_table "partidos", force: :cascade do |t|
+    t.date "fecha"
+    t.integer "ubicacion_id"
+    t.integer "equipo_id"
+    t.integer "deporte_id"
+    t.integer "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deporte_id"], name: "index_partidos_on_deporte_id"
+    t.index ["equipo_id"], name: "index_partidos_on_equipo_id"
+    t.index ["ubicacion_id"], name: "index_partidos_on_ubicacion_id"
+    t.index ["usuario_id"], name: "index_partidos_on_usuario_id"
   end
 
   create_table "tablons", force: :cascade do |t|

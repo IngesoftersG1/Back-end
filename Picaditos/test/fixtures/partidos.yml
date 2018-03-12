@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2018-03-12
+  ubicacion: one
+  equipo: one
+  deporte: one
+  usuario: one
+
+two:
+  fecha: 2018-03-12
+  ubicacion: two
+  equipo: two
+  deporte: two
+  usuario: two
