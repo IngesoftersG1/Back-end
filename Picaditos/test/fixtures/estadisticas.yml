@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  partidos_ganados: 1
+  partidos_perdidos: 1
+  partidos_empatados: 1
+  puntos_ganados: 1
+  goles_anotados: 1
+
+two:
+  partidos_ganados: 1
+  partidos_perdidos: 1
+  partidos_empatados: 1
+  puntos_ganados: 1
+  goles_anotados: 1
