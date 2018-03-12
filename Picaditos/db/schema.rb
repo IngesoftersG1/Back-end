@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312200542) do
+ActiveRecord::Schema.define(version: 20180312201706) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20180312200542) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "usuario_id"
+    t.integer "tablon_id"
+    t.index ["tablon_id"], name: "index_anuncios_on_tablon_id"
+    t.index ["usuario_id"], name: "index_anuncios_on_usuario_id"
   end
 
   create_table "canchas", force: :cascade do |t|
@@ -51,6 +55,10 @@ ActiveRecord::Schema.define(version: 20180312200542) do
     t.integer "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "usuario_id"
+    t.integer "deporte_id"
+    t.index ["deporte_id"], name: "index_equipos_on_deporte_id"
+    t.index ["usuario_id"], name: "index_equipos_on_usuario_id"
   end
 
   create_table "estadisticas", force: :cascade do |t|
@@ -99,6 +107,12 @@ ActiveRecord::Schema.define(version: 20180312200542) do
     t.integer "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "deporte_id"
+    t.integer "usuario_id"
+    t.integer "ubicacion_id"
+    t.index ["deporte_id"], name: "index_torneos_on_deporte_id"
+    t.index ["ubicacion_id"], name: "index_torneos_on_ubicacion_id"
+    t.index ["usuario_id"], name: "index_torneos_on_usuario_id"
   end
 
   create_table "ubicacions", force: :cascade do |t|
