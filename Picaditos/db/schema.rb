@@ -10,6 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20180312193257) do
+
+  create_table "canchas", force: :cascade do |t|
+    t.binary "disponibilidad"
+    t.integer "precio"
+    t.integer "calificacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ubicacions", force: :cascade do |t|
+    t.string "calle_principal"
+    t.string "calle_secundaria"
+    t.string "localidad"
+    t.string "ciudad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "tipo_de_documento"
+    t.string "nombres"
+    t.string "apellidos"
+    t.date "fecha_nacimiento"
+    t.integer "telefono"
+    t.string "correo_electronico"
+    t.string "num_deportes"
+    t.integer "calificacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ubicacion_id"
+    t.index ["ubicacion_id"], name: "index_usuarios_on_ubicacion_id"
+  end
 
 end
