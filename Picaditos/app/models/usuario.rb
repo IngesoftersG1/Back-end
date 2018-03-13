@@ -7,7 +7,6 @@ class Usuario < ApplicationRecord
     validates :apellidos, presence: {with: true, message: "Ingrese el apellido"}, format: { with: /\A[a-zA-Z]+\z/,
     message: "Solo se permiten letras" }
     validates :correo_electronico , format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,    message: "Solo se permiten letras" }
-    validates :fecha_nacimiento, presence: {with: true, message: "Ingrese el nombre"}
-    
-    
+    validates :fecha_nacimiento, presence: {with: true, message: "Ingrese la fecha de nacimiento"}
+    validates :telefono, format: {with: /\A[0-9]+\z/}, length: { in: 7..10 }
 end
