@@ -11,6 +11,8 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
+    @usuario= (set_usuario)
+    render json: @usuario, status: :ok
   end
 
   # GET /usuarios/new
@@ -70,6 +72,13 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.fetch(:usuario, {})
+      params.permit( :user_name, 
+      :nombres,
+      :apellidos,
+      :correo_electronico, 
+      :telefono,
+      :ubicacion_id,
+      :fecha_nacimiento
+      )
     end
 end
