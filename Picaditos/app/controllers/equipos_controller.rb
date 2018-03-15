@@ -1,15 +1,18 @@
 class EquiposController < ApplicationController
-  before_action :set_equipo, only: [:show, :update, :destroy]
+  before_action :set_equipo, only: [:index, :show, :update, :destroy]
 
   # GET /equipos
   # GET /equipos.json
   def index
     @equipos = Equipo.all
+    render json: @equipos, status: :ok
   end
 
   # GET /equipos/1
   # GET /equipos/1.json
   def show
+    @equipo= (set_equipo)
+    render json: @equipo, status: :ok
   end
 
   # POST /equipos
@@ -27,6 +30,7 @@ class EquiposController < ApplicationController
   # PATCH/PUT /equipos/1
   # PATCH/PUT /equipos/1.json
   def update
+    @equipo = Equipo.find params[:id]
     if @equipo.update(equipo_params)
       render :show, status: :ok, location: @equipo
     else
@@ -37,17 +41,23 @@ class EquiposController < ApplicationController
   # DELETE /equipos/1
   # DELETE /equipos/1.json
   def destroy
+    @equipo = set_equipo,
     @equipo.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipo
-      @equipo = Equipo.find(params[:id])
+      @equipo = Equipo.find_by(nombre:params[:nombre], deporte_id:params[:deporte_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipo_params
-      params.fetch(:equipo, {})
+      params.permit(:id, 
+      :nombre,
+      :nivel,
+      :deporte_id,
+      :capitan_name
+      )
     end
 end

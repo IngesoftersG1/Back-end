@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20180315005236) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "usuario_id"
+    t.string "autor_name"
     t.integer "tablon_id"
+    t.index ["autor_name"], name: "index_anuncios_on_autor_name"
     t.index ["tablon_id"], name: "index_anuncios_on_tablon_id"
-    t.index ["usuario_id"], name: "index_anuncios_on_usuario_id"
   end
 
   create_table "canchas", force: :cascade do |t|
@@ -41,13 +41,9 @@ ActiveRecord::Schema.define(version: 20180315005236) do
   create_table "deportes", force: :cascade do |t|
     t.text "descripcion"
     t.integer "min_jugadores"
-    t.integer "ubicacion_id"
-    t.integer "usuario_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nombre"
-    t.index ["ubicacion_id"], name: "index_deportes_on_ubicacion_id"
-    t.index ["usuario_id"], name: "index_deportes_on_usuario_id"
   end
 
   create_table "equipos", force: :cascade do |t|
