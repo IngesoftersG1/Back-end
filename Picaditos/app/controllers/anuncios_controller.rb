@@ -18,8 +18,9 @@ class AnunciosController < ApplicationController
   # POST /anuncios
   # POST /anuncios.json
   def create
+    
     @anuncio = Anuncio.new(anuncio_params)
-
+    
     if @anuncio.save
       render :show, status: :created, location: @anuncio
     else
@@ -59,7 +60,7 @@ class AnunciosController < ApplicationController
       :fecha_fin, 
       :descripcion,
       :tablon_id,
-      :user_name
+      :autor_name
       )
     end
 end
