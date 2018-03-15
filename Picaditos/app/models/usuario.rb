@@ -1,9 +1,11 @@
 
 class Usuario < ApplicationRecord
+    has_one :estadistica, as: :imageable
     has_many :anuncios
     has_many :canchas
     has_many :mensajes
     has_many :torneos
+    has_and_belongs_to_many :equipos, optional: true
     self.primary_key = "user_name"
     validates :user_name, uniqueness: true
     validates :nombres, presence: {with: true, message: "Ingrese el nombre"}, format: { with: /\A[a-zA-Z]+\z/,
