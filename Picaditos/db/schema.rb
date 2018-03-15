@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315005236) do
+ActiveRecord::Schema.define(version: 20180315153231) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -58,6 +58,20 @@ ActiveRecord::Schema.define(version: 20180315005236) do
     t.index ["deporte_id"], name: "index_equipos_on_deporte_id"
   end
 
+  create_table "equipos_torneos", id: false, force: :cascade do |t|
+    t.integer "equipo_id", null: false
+    t.integer "torneo_id", null: false
+    t.index ["equipo_id"], name: "index_equipos_torneos_on_equipo_id"
+    t.index ["torneo_id"], name: "index_equipos_torneos_on_torneo_id"
+  end
+
+  create_table "equipos_usuarios", id: false, force: :cascade do |t|
+    t.integer "usuario_id", null: false
+    t.integer "equipo_id", null: false
+    t.index ["equipo_id"], name: "index_equipos_usuarios_on_equipo_id"
+    t.index ["usuario_id"], name: "index_equipos_usuarios_on_usuario_id"
+  end
+
   create_table "estadisticas", force: :cascade do |t|
     t.integer "partidos_ganados"
     t.integer "partidos_perdidos"
@@ -66,6 +80,10 @@ ActiveRecord::Schema.define(version: 20180315005236) do
     t.integer "goles_anotados"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "usuario_id"
+    t.integer "equipo_id"
+    t.index ["equipo_id"], name: "index_estadisticas_on_equipo_id"
+    t.index ["usuario_id"], name: "index_estadisticas_on_usuario_id"
   end
 
   create_table "mensajes", force: :cascade do |t|
