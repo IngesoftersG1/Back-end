@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo: MyString
+  enlace: MyString
+  fecha_inicio: 2018-03-12
+  fecha_fin: 2018-03-12
+  descripcion: MyText
+
+two:
+  tipo: MyString
+  enlace: MyString
+  fecha_inicio: 2018-03-12
+  fecha_fin: 2018-03-12
+  descripcion: MyText
