@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :ubicacions
+  resources :torneos
+  resources :mensajes
+  resources :estadisticas
+  resources :canchas
+  resources :partidos
   resources :deportes
   resources :anuncios
   resources :tablons
