@@ -1,3 +1,4 @@
+
 class Cancha < ApplicationRecord
     belongs_to :usuario, optional: true
     belongs_to :ubicacion, optional: true
