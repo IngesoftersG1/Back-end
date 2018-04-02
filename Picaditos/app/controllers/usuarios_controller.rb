@@ -13,6 +13,9 @@ class UsuariosController < ApplicationController
   def show
     @usuario= set_usuario
     render json: @usuario, status: :ok
+    ## perform a paginated query:
+    @usuario = Usuario.paginate(:page => params[:page])
+
   end
 
   # POST /usuarios
