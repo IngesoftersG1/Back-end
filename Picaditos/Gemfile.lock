@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/ctran/annotate_models.git
+  revision: 5f37a974f3dff68f92b3495115f1399e7db5c584
+  specs:
+    annotate (2.7.2)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 13.0)
+
+GIT
   remote: https://github.com/stympy/faker.git
   revision: 679fd508c9f41f41b6df62024d67bc2281953395
   branch: master
@@ -183,6 +191,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
