@@ -23,8 +23,10 @@ class Usuario < ApplicationRecord
         @usuario
     end
 
-    def self.CheckEquipos(name)
+    def self.checkEquipos(name)
         @ret=Equipo.where("capitan_name = ?", name)
         @ret
     end
+
+    
 end

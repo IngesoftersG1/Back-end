@@ -10,7 +10,7 @@ class Equipo < ApplicationRecord
 
 
     def self.searchByDeporte(id)
-        @ret=Equipo.where("deporte_id = ?", name)
+        @ret=Equipo.where("deporte_id = ?", id)
         @ret
     end
 end
