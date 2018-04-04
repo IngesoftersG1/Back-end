@@ -5,6 +5,7 @@ class EquiposController < ApplicationController
   # GET /equipos.json
   def index
     @equipos = Equipo.all
+    @equipos = Equipo.paginate(:page => params[:page])
     render json: @equipos, status: :ok
   end
 
@@ -12,6 +13,7 @@ class EquiposController < ApplicationController
   # GET /equipos/1.json
   def show
     @equipo= (set_equipo)
+    @equipo = Equipo.paginate(:page => params[:page])
     render json: @equipo, status: :ok
   end
 
@@ -57,7 +59,8 @@ class EquiposController < ApplicationController
       :nombre,
       :nivel,
       :deporte_id,
-      :capitan_name
+      :capitan_name,
+      :page
       )
     end
 end
