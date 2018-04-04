@@ -1,3 +1,3 @@
 class DeporteSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :nombre, :descripcion 
 end

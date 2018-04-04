@@ -1,3 +1,5 @@
 class CanchaSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :precio, :calificacion
+
+  belongs_to :usuario
 end

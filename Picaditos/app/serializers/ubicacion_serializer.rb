@@ -1,3 +1,3 @@
 class UbicacionSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :calle_principal, :calle_secundaria, :localidad, :ciudad
 end

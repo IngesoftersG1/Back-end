@@ -1,3 +1,3 @@
 class PartidoSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :fecha, :ubicacion_id, :equipo_id
 end

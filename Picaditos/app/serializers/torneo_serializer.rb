@@ -1,3 +1,3 @@
 class TorneoSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :fecha, :premio, :organizador_name 
 end

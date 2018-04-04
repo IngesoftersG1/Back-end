@@ -1,3 +1,3 @@
 class TablonSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :titulo_tablon
 end
