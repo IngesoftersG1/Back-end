@@ -38,7 +38,7 @@ Anuncio.create(
   enlace: Faker::Internet.url('picaditos.com'),
   fecha_inicio: Faker::Date.between(2.days.ago, Date.today),
   fecha_fin: (Date.today),
-  usuario_id: Faker::LeagueOfLegends.champion, 
+  autor_name: Faker::LeagueOfLegends.champion, 
   tablon_id: 1,
   descripcion: "----"
 )
@@ -54,7 +54,7 @@ Anuncio.create(
   enlace: Faker::Internet.url('picaditos.com'),
   fecha_inicio: Faker::Date.between(2.days.ago, Date.today),
   fecha_fin: (Date.today),
-  usuario_id: Faker::LeagueOfLegends.champion, 
+  autor_name: Faker::LeagueOfLegends.champion, 
   tablon_id: 2,
   descripcion: "----"
 )

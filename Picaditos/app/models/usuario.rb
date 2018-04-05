@@ -18,4 +18,16 @@ class Usuario < ApplicationRecord
     validates :correo_electronico , format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,    message: "Solo se permiten letras" }
     validates :fecha_nacimiento, presence: {with: true, message: "Ingrese la fecha de nacimiento"}
     ## validates :telefono, format: {with: /\A[0-9]\z/}, length: { in: 7..10 }
+    
+    def self.searchByName(name)
+        @usuario=Usuario.where("user_name = ?", name)
+        @usuario
+    end
+
+    def self.checkEquipos(name)
+        @ret=Equipo.where("capitan_name = ?", name)
+        @ret
+    end
+
+    
 end
