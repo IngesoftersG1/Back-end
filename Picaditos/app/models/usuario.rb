@@ -1,5 +1,6 @@
 
 class Usuario < ApplicationRecord
+    has_secure_password
     has_one :estadistica, as: :imageable
     has_many :anuncios
     has_many :canchas

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315153231) do
+ActiveRecord::Schema.define(version: 20180404012501) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180315153231) do
     t.datetime "updated_at", null: false
     t.integer "usuario_id"
     t.integer "ubicacion_id"
+    t.string "nombre"
     t.index ["ubicacion_id"], name: "index_canchas_on_ubicacion_id"
     t.index ["usuario_id"], name: "index_canchas_on_usuario_id"
   end
@@ -127,6 +128,7 @@ ActiveRecord::Schema.define(version: 20180315153231) do
     t.integer "deporte_id"
     t.string "organizador_name"
     t.integer "ubicacion_id"
+    t.string "nombre"
     t.index ["deporte_id"], name: "index_torneos_on_deporte_id"
     t.index ["organizador_name"], name: "index_torneos_on_organizador_name"
     t.index ["ubicacion_id"], name: "index_torneos_on_ubicacion_id"
@@ -153,6 +155,7 @@ ActiveRecord::Schema.define(version: 20180315153231) do
     t.datetime "updated_at", null: false
     t.integer "ubicacion_id"
     t.string "user_name"
+    t.string "password"
     t.index ["ubicacion_id"], name: "index_usuarios_on_ubicacion_id"
   end
 
