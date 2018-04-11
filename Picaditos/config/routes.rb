@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  post 'user_token' => 'user_token#create'
+  resources :ubicacions
+  resources :torneos
+  resources :mensajes
+  resources :estadisticas
+  resources :canchas
+  resources :partidos
   resources :deportes
   resources :anuncios
   resources :tablons
