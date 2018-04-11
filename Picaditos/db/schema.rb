@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180411031513) do
     t.text "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "autor_name"
+    t.integer "autor_name"
     t.integer "tablon_id"
     t.index ["autor_name"], name: "index_anuncios_on_autor_name"
     t.index ["tablon_id"], name: "index_anuncios_on_tablon_id"
@@ -42,9 +42,13 @@ ActiveRecord::Schema.define(version: 20180411031513) do
   create_table "deportes", force: :cascade do |t|
     t.text "descripcion"
     t.integer "min_jugadores"
+    t.integer "ubicacion_id"
+    t.integer "usuario_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nombre"
+    t.index ["ubicacion_id"], name: "index_deportes_on_ubicacion_id"
+    t.index ["usuario_id"], name: "index_deportes_on_usuario_id"
   end
 
   create_table "equipos", force: :cascade do |t|
@@ -53,8 +57,8 @@ ActiveRecord::Schema.define(version: 20180411031513) do
     t.integer "calificacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "capitan_name"
     t.integer "deporte_id"
-    t.string "capitan_name"
     t.index ["capitan_name"], name: "index_equipos_on_capitan_name"
     t.index ["deporte_id"], name: "index_equipos_on_deporte_id"
   end
@@ -126,7 +130,7 @@ ActiveRecord::Schema.define(version: 20180411031513) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "deporte_id"
-    t.string "organizador_name"
+    t.integer "organizador_name"
     t.integer "ubicacion_id"
     t.string "nombre"
     t.index ["deporte_id"], name: "index_torneos_on_deporte_id"
@@ -148,7 +152,7 @@ ActiveRecord::Schema.define(version: 20180411031513) do
     t.string "apellidos"
     t.date "fecha_nacimiento"
     t.integer "telefono"
-    t.string "email"
+    t.string "correo_electronico"
     t.string "num_deportes"
     t.integer "calificacion"
     t.datetime "created_at", null: false
