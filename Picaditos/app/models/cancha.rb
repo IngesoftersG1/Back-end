@@ -1,3 +1,5 @@
+
+
 # == Schema Information
 #
 # Table name: canchas
@@ -11,6 +13,7 @@
 #  usuario_id     :integer
 #  ubicacion_id   :integer
 #
+
 
 class Cancha < ApplicationRecord
     belongs_to :usuario, optional: true
