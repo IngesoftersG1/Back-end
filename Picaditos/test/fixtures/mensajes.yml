@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: mensajes
+#
+#  id         :integer          not null, primary key
+#  contenido  :text
+#  usuario_id :integer
+#  fecha      :date
+#  asunto     :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
