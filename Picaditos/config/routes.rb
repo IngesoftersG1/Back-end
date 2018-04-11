@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   post 'user_token' => 'user_token#create'
   resources :ubicacions
   resources :torneos
