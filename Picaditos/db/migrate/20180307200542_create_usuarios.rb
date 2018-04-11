@@ -6,7 +6,7 @@ class CreateUsuarios < ActiveRecord::Migration[5.1]
       t.string :apellidos
       t.date :fecha_nacimiento
       t.integer :telefono
-      t.string :correo_electronico
+      t.string :email
       t.string :num_deportes
       t.integer :calificacion
 

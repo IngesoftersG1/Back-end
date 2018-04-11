@@ -25,4 +25,3 @@ class Anuncio < ApplicationRecord
     end
 end
 
-end
