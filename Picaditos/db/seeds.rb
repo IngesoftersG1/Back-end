@@ -17,15 +17,17 @@ end
 
 
 100.times do |row|
-Usuario.create(
-user_name: Faker::LeagueOfLegends.champion,    
-nombres: Faker::Name.first_name,
-apellidos: Faker::Name.last_name,
-correo_electronico: Faker::Internet.email, 
-fecha_nacimiento: Faker::Date.backward(23_725),
-telefono: Faker::PhoneNumber.subscriber_number,
-ubicacion_id: Faker::Number.number(3)
-)
+  user = User.new
+  user.user_name = Faker::LeagueOfLegends.champion
+  user.password = '1234567'
+  user.password_confirmation = '1234567'
+  user.email =  Faker::Internet.email
+  user.nombres = Faker::Name.first_name
+  user.apellidos = Faker::Name.last_name
+  user.fecha_nacimiento = Faker::Date.backward(23_725)
+  user.telefono = Faker::PhoneNumber.subscriber_number
+  user.ubicacion_id= Faker::Number.number(3)
+  user.save
 end
 
 Tablon.create(

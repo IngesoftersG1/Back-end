@@ -15,7 +15,7 @@
 class Equipo < ApplicationRecord
     has_one :estadistica, as: :imageable
     has_many :partidos
-    has_and_belongs_to_many :usuarios, optional: true
+    has_and_belongs_to_many :users, optional: true
     has_and_belongs_to_many :torneos, optional: true
     belongs_to :deporte, optional: true
     validates :nombre, presence: {with: true, message: "Ingrese el nombre del equipo"}
