@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: equipos
+#
+#  id           :integer          not null, primary key
+#  nombre       :string
+#  nivel        :integer
+#  calificacion :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  usuario_id   :integer
+#  deporte_id   :integer
+#
+
 class Equipo < ApplicationRecord
     has_one :estadistica, as: :imageable
     has_many :partidos

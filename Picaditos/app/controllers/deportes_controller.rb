@@ -6,13 +6,16 @@ class DeportesController < ApplicationController
   def index
     @deportes = Deporte.all
     render json: @deportes, status: :ok 
+    @deportes = Deporte.paginate(:page => params[:page])
   end
 
   # GET /deportes/1
   # GET /deportes/1.json
   def show
     @deporte= set_deporte
+    @deporte = Deporte.paginate(:page => params[:page])
     render json: @deporte, status: :ok
+
   end
 
   # POST /deportes
@@ -55,6 +58,7 @@ class DeportesController < ApplicationController
       params.permit(:descripcion,
       :min_jugadores, 
       :nombre, 
+      :page
       )
     end
 end
