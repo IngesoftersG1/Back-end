@@ -1,3 +1,3 @@
-class UsuarioSerializer < ActiveModel::Serializer
+class UserSerializer < ActiveModel::Serializer
   attributes :user_name, :correo_electronico
 end
