@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411031513) do
+ActiveRecord::Schema.define(version: 20180414161338) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 20180411031513) do
     t.index ["usuario_id"], name: "index_estadisticas_on_usuario_id"
   end
 
+  create_table "google_users", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.string "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mensajes", force: :cascade do |t|
     t.text "contenido"
     t.string "usuario_1_name"
@@ -156,6 +166,7 @@ ActiveRecord::Schema.define(version: 20180411031513) do
     t.integer "ubicacion_id"
     t.string "user_name"
     t.string "password_digest"
+    t.boolean "admin"
     t.index ["ubicacion_id"], name: "index_users_on_ubicacion_id"
   end
 
