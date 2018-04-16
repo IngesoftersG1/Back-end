@@ -24,12 +24,16 @@ class Cancha < ApplicationRecord
     #Queries
     #Buscar todas las canchas disponibles
     def self.searchIfAvailable(value)
-      Cancha.where("disponibilidad = ?", value).pluck(:nombre, :precio, :calificacion)
+      @cancha = Cancha.where("disponibilidad = ?", value).pluck(:nombre, :precio, :calificacion)
     end
 
     #Buscar las canchas cuyo precio está en un rango entre "min" y max
     def self.searchByPriceRange(min,max)
-      Cancha.where("precio >= ? AND precio <= ?",min,max).pluck(:nombre, :precio, :calificacion)
+      @cancha = Cancha.where("precio >= ? AND precio <= ?",min,max).pluck(:nombre, :precio, :calificacion)
     end
 
+    #Buscar las canchas cuya calificación sea mayor o igual que "value"
+    def self.searchByRating(value)
+      @cancha = Cancha.where("calificacion >= ?",value).pluck(:user_name, :email, :calificacion)
+    end
 end

@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  
+
   # GET /users
   # GET /users.json
   def index
-    @users = user.all
+    @users = User.all
     render json: @users, status: :ok
   end
 
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user= set_user
     render json: @user, status: :ok
     ## perform a paginated query:
-    
+
 
   end
 
@@ -58,10 +58,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.permit( :user_name, 
+      params.permit( :user_name,
       :nombres,
       :apellidos,
-      :email, 
+      :email,
       :telefono,
       :ubicacion_id,
       :fecha_nacimiento,

@@ -44,12 +44,12 @@ class User < ApplicationRecord
     end
     #Buscar un número "range" de usuarios con una calificacion mayor o igual a "rating"
     def self.searchByQualification(rating,range)
-      @qualif = User.where("calificacion >= ?",rating).limit(range).pluck(:user_name, :email, :calificacion)
+      @user = User.where("calificacion >= ?",rating).limit(range).pluck(:user_name, :email, :calificacion)
     end
     #Buscar todos los usuarios que estan en el equipo cuyo nombre es "team"
     def self.searchUsersInATeam(team)
       @user = User.joins(:equipos).where('nombre LIKE ?',team).pluck(:user_name, :email)
     end
-    
+
     mount_uploader :picture, PictureUploader
 end
