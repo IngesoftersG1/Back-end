@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
-  
+  include Knock::Authenticable
+  before_action :authenticate_user
+  before_action :set_user, only: [:index]
   # GET /users
   # GET /users.json
   def index
-    @users = user.all
-    render json: @users, status: :ok
+   
+  
+      @users = User.all
+      render json: @users, status: :ok
+    
+  
+  
   end
 
   # GET /users/1
@@ -21,7 +27,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = user.new(user_params)
+    @user = User.new(user_params)
 
     if @user.save
       render :show, status: :created, location: @user
@@ -35,7 +41,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    before_action :authenticate_user
+   
     if @user.update(user_params)
       render :show, status: :ok, location: @user
     else
@@ -53,7 +59,7 @@ class UsersController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = user.find(params[:id])
+      @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

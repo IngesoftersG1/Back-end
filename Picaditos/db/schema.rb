@@ -97,6 +97,12 @@ ActiveRecord::Schema.define(version: 20180416004054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mensajes", force: :cascade do |t|
     t.text "contenido"
     t.string "usuario_1_name"
