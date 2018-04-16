@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411204808) do
+ActiveRecord::Schema.define(version: 20180416004054) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20180411204808) do
     t.integer "ubicacion_id"
     t.string "user_name"
     t.string "password_digest"
+    t.string "picture"
     t.index ["ubicacion_id"], name: "index_users_on_ubicacion_id"
   end
 
