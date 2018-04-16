@@ -66,7 +66,8 @@ class UsersController < ApplicationController
       :ubicacion_id,
       :fecha_nacimiento,
       :page,
-      :password_digest
+      :password_digest,
+      :picture
       )
     end
 end

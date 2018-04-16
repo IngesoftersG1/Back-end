@@ -47,5 +47,5 @@ class User < ApplicationRecord
         @ret
     end
 
-    
+    mount_uploader :picture, PictureUploader
 end
