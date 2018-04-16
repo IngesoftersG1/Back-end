@@ -10,8 +10,10 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'rails', '~> 5.1.5'
 # Use sqlite3 as the database for Active Record
 group :production do
-  gem 'pg'
+  gem "pg", ">= 0.18", "< 2.0"
 end
+#Google authentication
+gem "omniauth-google-oauth2", "~> 0.2.1"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authenticate_user
+  
   # GET /users
   # GET /users.json
   def index
     @users = user.all
-    @users = user.paginate(:page => params[:page])
     render json: @users, status: :ok
   end
 
@@ -13,7 +12,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user= set_user
-    @user = user.paginate(:page => params[:page])
     render json: @user, status: :ok
     ## perform a paginated query:
     
@@ -37,6 +35,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    before_action :authenticate_user
     if @user.update(user_params)
       render :show, status: :ok, location: @user
     else
@@ -47,6 +46,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    before_action :authenticate_user
     @user.destroy
   end
 

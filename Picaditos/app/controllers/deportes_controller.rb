@@ -13,7 +13,6 @@ class DeportesController < ApplicationController
   # GET /deportes/1.json
   def show
     @deporte= set_deporte
-    @deporte = Deporte.paginate(:page => params[:page])
     render json: @deporte, status: :ok
 
   end

@@ -5,7 +5,7 @@ class AnunciosController < ApplicationController
   # GET /anuncios.json
   def index
     @anuncios = Anuncio.all
-    render json: @anuncios, status: :ok, serializer: AnuncioSerializer 
+    render json: @anuncios, status: :ok
   end
 
   # GET /anuncios/1
