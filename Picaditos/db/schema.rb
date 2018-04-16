@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416004054) do
+ActiveRecord::Schema.define(version: 20180416170612) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -66,11 +66,11 @@ ActiveRecord::Schema.define(version: 20180416004054) do
     t.index ["torneo_id"], name: "index_equipos_torneos_on_torneo_id"
   end
 
-  create_table "equipos_usuarios", id: false, force: :cascade do |t|
-    t.integer "usuario_id", null: false
+  create_table "equipos_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
     t.integer "equipo_id", null: false
-    t.index ["equipo_id"], name: "index_equipos_usuarios_on_equipo_id"
-    t.index ["usuario_id"], name: "index_equipos_usuarios_on_usuario_id"
+    t.index ["equipo_id"], name: "index_equipos_users_on_equipo_id"
+    t.index ["user_id"], name: "index_equipos_users_on_user_id"
   end
 
   create_table "estadisticas", force: :cascade do |t|
@@ -93,6 +93,12 @@ ActiveRecord::Schema.define(version: 20180416004054) do
     t.string "name"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

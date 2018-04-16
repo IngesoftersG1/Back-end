@@ -36,16 +36,20 @@ class User < ApplicationRecord
     validates :email , format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,    message: "Solo se permiten letras" }
     validates :fecha_nacimiento, presence: {with: true, message: "Ingrese la fecha de nacimiento"}
     ## validates :telefono, format: {with: /\A[0-9]\z/}, length: { in: 7..10 }
-    
+
+    #Queries
+    #Buscar todos los usuarios cuyo username empiece con "name"
     def self.searchByName(name)
-        @usuario=User.where("user_name = ?", name)
-        @usuario
+      @user=User.where("user_name LIKE ?", "#{name}%").all.to_a
     end
-
-    def self.checkEquipos(name)
-        @ret=Equipo.where("capitan_name = ?", name)
-        @ret
+    #Buscar un número "range" de usuarios con una calificacion mayor o igual a "rating"
+    def self.searchByQualification(rating,range)
+      @qualif = User.where("calificacion >= ?",rating).limit(range).pluck(:user_name, :email, :calificacion)
     end
-
+    #Buscar todos los usuarios que estan en el equipo cuyo nombre es "team"
+    def self.searchUsersInATeam(team)
+      @user = User.joins(:equipos).where('nombre LIKE ?',team).pluck(:user_name, :email)
+    end
+    
     mount_uploader :picture, PictureUploader
 end
