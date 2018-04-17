@@ -5,12 +5,14 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    render json: @items, status: :ok
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
-    
+    @item= (set_item)
+    render json: @item, status: :ok
   end
 
   # POST /items
@@ -49,6 +51,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:picture)
+      params.permit(:picture)
     end
 end

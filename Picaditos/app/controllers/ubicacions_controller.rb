@@ -5,11 +5,14 @@ class UbicacionsController < ApplicationController
   # GET /ubicacions.json
   def index
     @ubicacions = Ubicacion.all
+    render json: @ubicacions, status: :ok
   end
 
   # GET /ubicacions/1
   # GET /ubicacions/1.json
   def show
+    @ubicacion= set_ubicacion
+    render json: @ubicacion, status: :ok
   end
 
   # POST /ubicacions
@@ -48,6 +51,11 @@ class UbicacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ubicacion_params
-      params.fetch(:ubicacion, {})
+      params.permit( :calle_principal,
+      :calle_secundaria,
+      :localidad,
+      :ciudad,
+      :nombre
+      )
     end
 end

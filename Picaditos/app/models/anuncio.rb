@@ -10,7 +10,7 @@
 #  descripcion  :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  usuario_id   :integer
+#  user_id      :string
 #  tablon_id    :integer
 #
 
@@ -19,9 +19,20 @@ class Anuncio < ApplicationRecord
     belongs_to :usuario, optional: true
     validates :descripcion, presence: {with: true, message: "El cuerpo del anuncio no puede estar vacío"}
 
+    #Queries
+    #Buscar los anuncios que están en el tablón cuyo id es "id"
     def self.searchByTablon(id)
-        @ret=Anuncio.where("tablon_id = ?", id)
-        @ret
+        @anuncio=Anuncio.where("tablon_id = ?", id).pluck(:tipo,:descripcion,:fecha_inicio,:fecha_fin)
     end
-end
 
+    #Buscar los anuncios cuya fecha de inicio está entre "start" y "end_"
+    def self.searchByStartDate(start,end_)
+        @anuncio = Anuncio.where("fecha_inicio >= ? AND fecha_inicio <= ?",start,end_).pluck(:tipo, :descripcion, :fecha_inicio, :fecha_fin)
+    end
+
+    #Buscar los anuncios cuya fecha de finalización está entre "start" y "end_"
+    def self.searchByEndDate(start,end_)
+        @anuncio = Anuncio.where("fecha_fin >= ? AND fecha_fin <= ?",start,end_).pluck(:tipo, :descripcion, :fecha_inicio, :fecha_fin)
+    end
+
+end

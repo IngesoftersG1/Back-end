@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: google_users
+#
+#  id               :integer          not null, primary key
+#  provider         :string
+#  uid              :string
+#  name             :string
+#  oauth_token      :string
+#  oauth_expires_at :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 
 class GoogleUser < ActiveRecord::Base
     def self.from_omniauth(auth)

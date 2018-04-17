@@ -5,11 +5,14 @@ class CanchasController < ApplicationController
   # GET /canchas.json
   def index
     @canchas = Cancha.all
+    render json: @canchas, status: :ok
   end
 
   # GET /canchas/1
   # GET /canchas/1.json
   def show
+    @cancha= set_cancha
+    render json: @cancha, status: :ok
   end
 
   # POST /canchas
@@ -48,6 +51,11 @@ class CanchasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cancha_params
-      params.fetch(:cancha, {})
+      params.permit( :disponibilidad,
+      :precio,
+      :usuario_id,
+      :ubicacion_id,
+      :nombre
+      )
     end
 end

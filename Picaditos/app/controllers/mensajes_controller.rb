@@ -5,11 +5,14 @@ class MensajesController < ApplicationController
   # GET /mensajes.json
   def index
     @mensajes = Mensaje.all
+    render json: @mensajes, status: :ok
   end
 
   # GET /mensajes/1
   # GET /mensajes/1.json
   def show
+    @mensaje= (set_mensaje)
+    render json: @mensaje, status: :ok
   end
 
   # POST /mensajes
@@ -48,6 +51,11 @@ class MensajesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mensaje_params
-      params.fetch(:mensaje, {})
+      params.permit(:contenido,
+      :usuario_1_name,
+      :usuario_2_name,
+      :fecha,
+      :asunto
+      )
     end
 end
