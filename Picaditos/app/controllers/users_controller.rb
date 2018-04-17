@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-<<<<<<< HEAD
   include Knock::Authenticable
   before_action :authenticate_user
   before_action :set_user, only: [:index]
@@ -13,15 +12,6 @@ class UsersController < ApplicationController
     
   
   
-=======
-  before_action :set_user, only: [:show, :update, :destroy]
-
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-    render json: @users, status: :ok
->>>>>>> queries2
   end
 
   # GET /users/1
