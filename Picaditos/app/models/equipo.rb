@@ -8,8 +8,8 @@
 #  calificacion :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  usuario_id   :integer
 #  deporte_id   :integer
+#  capitan_name :string
 #
 
 class Equipo < ApplicationRecord
@@ -24,8 +24,25 @@ class Equipo < ApplicationRecord
 
     self.per_page = 10
 
-    def self.searchByDeporte(id)
-        @ret=Equipo.where("deporte_id = ?", id)
-        @ret
+    #Queries
+    #Buscar los equipos cuyo nivel sea igual a "level"
+    def self.searchByLevel(level)
+      @equipo = Equipo.where("nivel = ?",level).pluck(:nombre, :capitan_name, :calificacion)
     end
+
+    #Buscar los equipos que compiten en el deporte "sport"
+    def self.searchTeamsbySport(sport)
+      @equipo = Equipo.joins(:deporte).where("deportes.nombre LIKE ?",sport).pluck(:nombre)
+    end
+
+    #Buscar el equipo cuyo capitán tiene un nombre que empieza por "name"
+    def self.searchByCaptain(name)
+      @equipo = Equipo.where("capitan_name LIKE ?","#{name}%").pluck(:nombre, :capitan_name)
+    end
+
+    #Buscar el equipo cuya calificación está entre el rango "min" y "max" y compite en el deporte "sport"
+    def self.searchByQualification(min,max,sport)
+      @equipo = Equipo.joins(:deporte).where("calificacion >= ? AND calificacion <= ? AND deportes.nombre = ?",min,max,sport).pluck(:nombre)
+    end
+
 end

@@ -1,21 +1,23 @@
 # == Schema Information
 #
-# Table name: usuarios
+# Table name: users
 #
-#  id                 :integer          not null
-#  nombres            :string
-#  apellidos          :string
-#  fecha_nacimiento   :date
-#  telefono           :integer
-#  correo_electronico :string
-#  num_deportes       :string
-#  calificacion       :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  ubicacion_id       :integer
-#  user_name          :string           primary key
+#  id               :integer          not null
+#  nombres          :string
+#  apellidos        :string
+#  fecha_nacimiento :date
+#  telefono         :integer
+#  email            :string
+#  num_deportes     :string
+#  calificacion     :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  ubicacion_id     :integer
+#  user_name        :string           primary key
+#  password_digest  :string
+#  admin            :boolean
+#  picture          :string
 #
-
 
 class User < ApplicationRecord
     has_secure_password
@@ -50,6 +52,7 @@ class User < ApplicationRecord
     def self.searchUsersInATeam(team)
       @user = User.joins(:equipos).where('nombre LIKE ?',team).pluck(:user_name, :email)
     end
+        
 
     mount_uploader :picture, PictureUploader
 end

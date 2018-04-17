@@ -2,15 +2,16 @@
 #
 # Table name: torneos
 #
-#  id           :integer          not null, primary key
-#  fecha        :date
-#  premio       :string
-#  calificacion :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  deporte_id   :integer
-#  usuario_id   :integer
-#  ubicacion_id :integer
+#  id               :integer          not null, primary key
+#  fecha            :date
+#  premio           :string
+#  calificacion     :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  deporte_id       :integer
+#  organizador_name :string
+#  ubicacion_id     :integer
+#  nombre           :string
 #
 
 class Torneo < ApplicationRecord

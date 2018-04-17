@@ -1,19 +1,18 @@
 
-
 # == Schema Information
 #
 # Table name: canchas
 #
 #  id             :integer          not null, primary key
-#  disponibilidad :binary
+#  disponibilidad :boolean
 #  precio         :integer
 #  calificacion   :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  usuario_id     :integer
 #  ubicacion_id   :integer
+#  nombre         :string
 #
-
 
 class Cancha < ApplicationRecord
     belongs_to :user, optional: true

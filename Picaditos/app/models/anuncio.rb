@@ -10,7 +10,7 @@
 #  descripcion  :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  usuario_id   :integer
+#  autor_name   :string
 #  tablon_id    :integer
 #
 

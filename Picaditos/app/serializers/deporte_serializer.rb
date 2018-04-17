@@ -1,3 +1,3 @@
 class DeporteSerializer < ActiveModel::Serializer
-  attributes :nombre, :descripcion 
+  attributes :nombre, :descripcion, :min_jugadores 
 end
