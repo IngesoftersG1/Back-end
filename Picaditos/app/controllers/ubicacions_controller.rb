@@ -5,11 +5,14 @@ class UbicacionsController < ApplicationController
   # GET /ubicacions.json
   def index
     @ubicacions = Ubicacion.all
+    render json: @ubicacions, status: :ok
   end
 
   # GET /ubicacions/1
   # GET /ubicacions/1.json
   def show
+    @ubicacion= set_ubicacion
+    render json: @ubicacion, status: :ok
   end
 
   # POST /ubicacions

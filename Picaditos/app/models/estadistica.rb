@@ -17,13 +17,4 @@
 class Estadistica < ApplicationRecord
     belongs_to :imageable, polymorphic: true, optional: true
 
-    #Queries
-    #Buscar el nombre de usuario con sus estadisticas de partidos ganados, perdidos, partidos_empatados
-    #puntos ganados y goles anotados
-    def self.searchCompleteHistory()
-      @estadistica = Estadistica.joins(:user).pluck(:user_name,:partidos_ganados,:partidos_perdidos, :partidos_empatados, :puntos_ganados, :goles_anotados)
-    end
-
-
-
 end
