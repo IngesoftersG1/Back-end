@@ -12,6 +12,7 @@
 #  organizador_name :string
 #  ubicacion_id     :integer
 #  nombre           :string
+#  user_id          :string
 #
 
 class Torneo < ApplicationRecord

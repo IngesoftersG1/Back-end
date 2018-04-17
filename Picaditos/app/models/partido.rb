@@ -7,7 +7,7 @@
 #  ubicacion_id :integer
 #  equipo_id    :integer
 #  deporte_id   :integer
-#  usuario_id   :integer
+#  user_id      :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
