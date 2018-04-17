@@ -51,6 +51,11 @@ class UbicacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ubicacion_params
-      params.fetch(:ubicacion, {})
+      params.permit( :calle_principal,
+      :calle_secundaria,
+      :localidad,
+      :ciudad,
+      :nombre
+      )
     end
 end

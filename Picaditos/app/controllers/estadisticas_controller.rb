@@ -5,11 +5,14 @@ class EstadisticasController < ApplicationController
   # GET /estadisticas.json
   def index
     @estadisticas = Estadistica.all
+    render json: @estadisticas, status: :ok
   end
 
   # GET /estadisticas/1
   # GET /estadisticas/1.json
   def show
+    @estadistica= (set_estadistica)
+    render json: @estadistica, status: :ok
   end
 
   # POST /estadisticas
@@ -48,6 +51,8 @@ class EstadisticasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estadistica_params
-      params.fetch(:estadistica, {})
+      params.permit(:usuario_id,
+      :equipo_id,
+      )
     end
 end

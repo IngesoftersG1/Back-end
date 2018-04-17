@@ -5,11 +5,14 @@ class TorneosController < ApplicationController
   # GET /torneos.json
   def index
     @torneos = Torneo.all
+    render json: @torneos, status: :ok
   end
 
   # GET /torneos/1
   # GET /torneos/1.json
   def show
+    @torneo= set_torneo
+    render json: @torneo, status: :ok
   end
 
   # POST /torneos
@@ -48,6 +51,12 @@ class TorneosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def torneo_params
-      params.fetch(:torneo, {})
+      params.permit( :fecha,
+      :premio,
+      :deporte_id,
+      :organizador_name,
+      :nombre,
+      :ubicacion_id
+      )
     end
 end

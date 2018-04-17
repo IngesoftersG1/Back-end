@@ -5,11 +5,14 @@ class PartidosController < ApplicationController
   # GET /partidos.json
   def index
     @partidos = Partido.all
+    render json: @partidos, status: :ok
   end
 
   # GET /partidos/1
   # GET /partidos/1.json
   def show
+    @partido= set_partido
+    render json: @partido, status: :ok
   end
 
   # POST /partidos
@@ -48,6 +51,11 @@ class PartidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partido_params
-      params.fetch(:partido, {})
+      params.permit( :fecha,
+      :deporte_id,
+      :usuario_id,
+      :ubicacion_id,
+      :equipo_id
+      )
     end
 end
