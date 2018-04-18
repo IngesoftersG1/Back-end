@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include Knock::Authenticable
-  before_action :authenticate_user
-  before_action :set_user, only: [:index]
+  #before_action :authenticate_user
+  #before_action :set_user, only: [:index]
   # GET /users
   # GET /users.json
   def index
@@ -19,9 +19,7 @@ class UsersController < ApplicationController
   def show
     @user= set_user
     render json: @user, status: :ok
-    ## perform a paginated query:
-
-
+   
   end
 
   # POST /users
@@ -32,7 +30,7 @@ class UsersController < ApplicationController
     if @user.save
       render :show, status: :created, location: @user
       # Tell the UserMailer to send a welcome email after save
-      UserMailer.welcome_email(@user).deliver_now
+      User1Mailer.welcome_email(@user).deliver_now
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -72,7 +70,8 @@ class UsersController < ApplicationController
       :ubicacion_id,
       :fecha_nacimiento,
       :page,
-      :password_digest,
+      :password,
+      :password_confirmation,
       :picture
       )
     end

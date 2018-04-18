@@ -1,0 +1,14 @@
+<h1>Estadisticas</h1>
+  <table>
+   
+    <th>Username:</th>
+    <p><%= @user.user_name %></p>
+    <p><%= @order.article_number %></p>
+    <p><%= @order.created_at %></p>
+    <%= @users.each do |user| %>
+      <tr>
+          <td><%= user.user_name %></td>
+          
+      </tr>
+    <%= end %>
+  </table>

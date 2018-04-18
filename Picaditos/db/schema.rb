@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417042035) do
+ActiveRecord::Schema.define(version: 20180417222128) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -81,10 +81,10 @@ ActiveRecord::Schema.define(version: 20180417042035) do
     t.integer "goles_anotados"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "usuario_id"
+    t.string "user_id"
     t.integer "equipo_id"
     t.index ["equipo_id"], name: "index_estadisticas_on_equipo_id"
-    t.index ["usuario_id"], name: "index_estadisticas_on_usuario_id"
+    t.index ["user_id"], name: "index_estadisticas_on_user_id"
   end
 
   create_table "google_users", force: :cascade do |t|
