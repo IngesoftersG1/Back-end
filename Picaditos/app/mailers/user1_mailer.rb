@@ -1,5 +1,4 @@
 class User1Mailer < ApplicationMailer
-    default from: 'notifications@picaditos.com'
  
   def welcome_email(user)
     @user = user
