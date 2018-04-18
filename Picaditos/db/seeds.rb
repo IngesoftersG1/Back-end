@@ -46,6 +46,7 @@ Tablon.create(
 titulo_tablon: "Torneos",
 )
 
+=begin
 5.times do |row|
 Anuncio.create(
   tipo: "Torneo",
@@ -57,11 +58,13 @@ Anuncio.create(
   descripcion: "----"
 )
 end
+=end
 
 Tablon.create(
 titulo_tablon: "Clasificados",
 )
 
+=begin
 5.times do |row|
 Anuncio.create(
   tipo: "Clasificado",
@@ -73,6 +76,7 @@ Anuncio.create(
   descripcion: "----"
 )
 end
+=end
 
 Deporte.create(
 nombre: "Futbol",

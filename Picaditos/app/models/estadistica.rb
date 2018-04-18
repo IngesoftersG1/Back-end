@@ -10,7 +10,7 @@
 #  goles_anotados     :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  usuario_id         :integer
+#  user_id            :integer
 #  equipo_id          :integer
 #
 

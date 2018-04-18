@@ -1,5 +1,6 @@
 class EquiposController < ApplicationController
-  before_action :set_equipo, only: [:index, :show, :update, :destroy]
+  before_action :set_equipo, only: [:index, :show, :update, :destroy, :my_team
+  ]
 
   # GET /equipos
   # GET /equipos.json
@@ -7,7 +8,13 @@ class EquiposController < ApplicationController
     @equipos = Equipo.all
     render json: @equipos, status: :ok
   end
-
+  
+  def my_team
+    @user = User.find(params[:user_name])
+    @equipo = Equipo.searchByCaptain(@user.user_name)
+    render json: @equipo, status: :ok 
+  end
+  
   # GET /equipos/1
   # GET /equipos/1.json
   def show
