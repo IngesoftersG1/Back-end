@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         # Tell the UserMailer to send a welcome email after save
-        UserMailer.welcome_email(@user).deliver_now
+        User1Mailer.welcome_email(@user).deliver_now
         format.html{redirect_to(@user, notice: 'El usuario fue creado correctamente.') }
         format.json {render json: @user, status: :created, location: @user}
       else
@@ -44,6 +44,8 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
+  
+ 
 
   # DELETE /users/1
   # DELETE /users/1.json
