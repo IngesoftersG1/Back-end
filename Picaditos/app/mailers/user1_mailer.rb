@@ -1,15 +1,15 @@
 class User1Mailer < ApplicationMailer
     default from: 'notifications@picaditos.com'
  
-  def welcome_email(usuario)
-    @usuario = usuario
+  def welcome_email(user)
+    @user = user
     @url  = 'http://example.com/login'
-    mail(to: @usuario.email, subject: 'Gracias por registrarte')
+    mail(to: @usuer.email, subject: 'Gracias por registrarte')
   end
   
-  def password_email(usuario)
-    @usuario = usuario
+  def password_email(user)
+    @user = user
     @url  = 'http://example.com/login'
-    mail(to: @usuario.email, subject: 'Cambio de contraseña')
+    mail(to: @user.email, subject: 'Cambio de contraseña')
   end
 end

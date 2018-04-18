@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+<<<<<<< HEAD
     @user = User.new(user_params)
 
     if @user.save
@@ -35,6 +36,20 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(@user).deliver_now
     else
       render json: @user.errors, status: :unprocessable_entity
+=======
+    @user = user.new(user_params)
+    
+    respond_to do |format|
+      if @user.save
+        # Tell the UserMailer to send a welcome email after save
+        UserMailer.welcome_email(@user).deliver_now
+        format.html{redirect_to(@user, notice: 'El usuario fue creado correctamente.') }
+        format.json {render json: @user, status: :created, location: @user}
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+>>>>>>> moremailers
     end
   end
 
