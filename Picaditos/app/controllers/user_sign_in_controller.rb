@@ -17,7 +17,7 @@ class UserSignInController < ApplicationController
                 user_new.apellidos = data['family_name'] 
                 user_new.email = data['email'] 
                 user_new.fecha_nacimiento = '2000-04-01'
-                user_new.user_name = 'sddff'
+                user_new.user_name = data['given_name']
               
                 
                 if user_new.save(validate: false)
