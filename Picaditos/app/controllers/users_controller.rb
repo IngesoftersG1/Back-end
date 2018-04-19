@@ -28,12 +28,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)   
     respond_to do |format|
       if @user.save
-        # Tell the UserMailer to send a welcome email after save
+        # Tell the User1Mailer to send a welcome email after save
         User1Mailer.welcome_email(@user).deliver_now
         format.html{redirect_to(@user, notice: 'El usuario fue creado correctamente.') }
         format.json {render json: @user, status: :created, location: @user}
       else
-       
+        format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -42,8 +42,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-   
     if @user.update(user_params)
+      # Tell the User1Mailer to send a password email after save
+      User1Mailer.password_email(@user).deliver_now
       render :show, status: :ok, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity

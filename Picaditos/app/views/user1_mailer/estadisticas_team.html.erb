@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-    <title>Cambio de contraseña</title>
+    <title>Las estadisticas de tu equipo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body style="margin: 0; padding: 0;">
@@ -12,17 +12,18 @@
           <table align="center" border="1" bordercolor="gray" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
             <tr>
               <td align="center" bgcolor="#59ff33" style="padding: 40px 0 30px 0; font-size: 24px; font-family: Arial, sans-serif; color: #153643;">
-                <b>Saludos desde Picaditos.com, <%= @user.nombres %>.</b>
+                <b>Saludos desde Picaditos.com</b>
               </td>
             </tr>
             <tr>
               <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
-                Has solicitado un cambio de contraseña,<br/>
-                Necesitamos confirmar que has sido tú el que ha mandado la solicitud.<br/>
+                Queremos mostrarte las estadisticas que ha obtenido tu equipo desde que se formó.<br/>
+                Aqui tienes todos los datos que hemos obtenido de su rendimiento:<br/>
+                <%= @equipo.estadisticas %>.<br/>
                 <br/>
-                Para cambiar tu contraseña, por favor sigue este link: <%= @url %>.
+                Para obtener más información de los logros de tu equipo, sigue este enlace: <%= @url %>.<br/>
                 <br/>
-                Desde el team de Picaditos.com esperamos que esto sea de tu ayuda!
+                Esperamos que su trabajo en equipo los lleve a mejorar!
               </td>
             </tr>
             <tr>

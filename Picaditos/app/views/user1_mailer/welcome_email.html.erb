@@ -1,17 +1,48 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <title>Bienvenido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
-  <body>
-    <h1>Bienvenido a Picaditos.com, <%= @user.nombres %></h1>
-    <p>
-      Te has registrado correctamente en Picaditos.com,
-      tu nombre de usuario es: <%= @user.user_name %>.<br>
-    </p>
-    <p>
-      Para ingresar al sitio, por favor siga este link: <%= @url %>.
-    </p>
-    <p>Gracias por unirte, te esperamos en la cancha!</p>
+  <body style="margin: 0; padding: 0;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td style="padding: 20px 0 30px 0;">
+          <table align="center" border="1" bordercolor="gray" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+            <tr>
+              <td align="center" bgcolor="#59ff33" style="padding: 40px 0 30px 0; font-size: 24px; font-family: Arial, sans-serif; color: #153643;">
+                <b>Bienvenido a Picaditos.com, <%= @user.nombres %>.</b>
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+                Te has registrado correctamente en Picaditos.com,<br/>
+                Tu nombre de usuario es: <%= @user.user_name %>.<br/>
+                <br/>
+                Para ingresar a nuestro sitio, por favor sigue este link: <%= @url %>.<br/>
+                <br/>
+                Gracias por unirte, ¡Te esperamos en la cancha!
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor="#ee4c50" style="padding: 30px 30px 30px 30px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td width="75%" style="color: #ffffff; font-family: Arial, sans-serif; font-size: 14px;">
+                      &reg; Picaditos.com, Colombia 2018<br/>
+                      <a href="#" style="color: #ffffff;"><font color="#ffffff">Unsubscribe</font></a> to this newsletter instantly
+                    </td>
+                    <td align="right">
+                      Redes sociales
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
