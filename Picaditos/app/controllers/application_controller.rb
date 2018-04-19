@@ -7,4 +7,6 @@ class ApplicationController < ActionController::API
   def current_user
     @current_user ||= GoogleUser.find(session[:user_id]) if session[:user_id]
   end
+  
+  serialization_scope :view_context
 end

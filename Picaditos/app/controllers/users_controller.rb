@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   # GET /user
   # GET /users.json
   def index
-      before_action :authenticate_user
-      if current_user.admin?
+      #before_action :authenticate_user
+      #if current_user.admin?
         @users = User.all
         render json: @users, status: :ok
-      else
-        render json: [], status: :unauthorized
-      end
+      #else
+       # render json: [], status: :unauthorized
+      #end
   end
 
   # GET /users/1
