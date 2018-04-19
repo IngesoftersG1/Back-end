@@ -31,6 +31,8 @@ class EstadisticasController < ApplicationController
   # PATCH/PUT /estadisticas/1.json
   def update
     if @estadistica.update(estadistica_params)
+      # Tell the User1Mailer to send a estadisticas show email after update
+      User1Mailer.estadisticas_show(@estadistica.user_id).deliver_now
       render :show, status: :ok, location: @estadistica
     else
       render json: @estadistica.errors, status: :unprocessable_entity
@@ -51,8 +53,9 @@ class EstadisticasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estadistica_params
-      params.permit(:usuario_id,
-      :equipo_id,
+      params.permit(
+        :user_id,
+        :equipo_id,
       )
     end
 end

@@ -19,8 +19,9 @@ class MensajesController < ApplicationController
   # POST /mensajes.json
   def create
     @mensaje = Mensaje.new(mensaje_params)
-
     if @mensaje.save
+      # Tell the User1Mailer to send a message incoming after save
+      User1Mailer.message_incoming(@mensaje.usuario_2_name).deliver_now
       render :show, status: :created, location: @mensaje
     else
       render json: @mensaje.errors, status: :unprocessable_entity
@@ -52,7 +53,7 @@ class MensajesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mensaje_params
       params.permit(:contenido,
-      :usuario_1_name,
+      :user_id,
       :usuario_2_name,
       :fecha,
       :asunto

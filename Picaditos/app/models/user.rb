@@ -70,6 +70,5 @@ class User < ApplicationRecord
       @user = User.joins(:anuncios).where('user_name = ?',name).select("anuncios.tipo AS 'Tipo de Anuncio:',anuncios.fecha_inicio AS 'Fecha de inicio del Anuncio:',anuncios.fecha_fin AS 'Fecha de cierre del Anuncio:',anuncios.descripcion AS 'Anuncio:'").all.to_a
     end
 
-
     mount_uploader :picture, PictureUploader
 end
