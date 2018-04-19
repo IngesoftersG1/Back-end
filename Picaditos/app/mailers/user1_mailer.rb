@@ -3,7 +3,7 @@ class User1Mailer < ApplicationMailer
   def welcome_email(user)
     @user = user
     @url  = 'https://calm-taiga-13065.herokuapp.com/'
-    mail(to: @user.email, subject: 'Gracias por registrarte')
+    mail(to: @user.email, subject: 'Gracias por registrarte!')
   end
   
   def password_email(user)
