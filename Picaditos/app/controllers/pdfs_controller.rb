@@ -1,9 +1,9 @@
 class  PdfsController  <  ActionController::Base
-	def  show
+	def  show_deporte
 		respond_to do |format|
-			@user = User.find(params[:user_name])
+			@deporte = Deporte.find(params[:id])
 			format.pdf do
-				render pdf: "template", template: "../views/pdfs/template.html.erb"  
+				render pdf: "template", template: "../views/pdfs/template_deporte.html.erb"  
 			end
 
 		end

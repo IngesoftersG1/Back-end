@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
   
   get "pdfs/show", to:  "pdfs#show"
+  get "pdfs/show_deporte", to:  "pdfs#show_deporte"
   get "equipos/my_team", to: "equipos#my_team"
   post 'user_token' => 'user_token#create'
   resources :ubicacions

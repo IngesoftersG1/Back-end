@@ -2,11 +2,16 @@ class UsersController < ApplicationController
   include Knock::Authenticable
   #before_action :authenticate_user
   #before_action :set_user, only: [:index]
-  # GET /users
+  # GET /user
   # GET /users.json
   def index
-      @users = User.all
-      render json: @users, status: :ok
+      before_action :authenticate_user
+      if current_user.admin?
+        @users = User.all
+        render json: @users, status: :ok
+      else
+        render json: [], status: :unauthorized
+      end
   end
 
   # GET /users/1

@@ -32,11 +32,12 @@ end
 
 user = User.new
   user.user_name = 'Ingesofters'
-  user.password = 'se2018-1'
-  user.password_confirmation = 'se2018-1'
+  user.password = 'se201811'
+  user.password_confirmation = 'se201811'
   user.email =  'me@unal.edu.co'
   user.nombres = 'Ingesofters'
-  user.apellidos = 'G1'
+  user.apellidos = 'G'
+  user.admin = true 
   user.fecha_nacimiento = Faker::Date.backward(23_725)
   user.telefono = Faker::PhoneNumber.subscriber_number
   user.ubicacion_id= Faker::Number.number(3)
