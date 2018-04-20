@@ -42,7 +42,12 @@ class TorneosController < ApplicationController
   def destroy
     @torneo.destroy
   end
-
+  
+  def my_tournaments
+    @user = User.find(params[:user_name])
+    @torneo = Torneo.searchByOrganizador(@user.user_name)
+    render json: @equipo, status: :ok 
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_torneo

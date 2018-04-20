@@ -125,3 +125,12 @@ end
   )
 end
 
+5.times do |row|
+  Torneo.create(
+    fecha: Faker::Date.between(2.days.ago, Date.today),
+    nombre: Faker::RockBand.name,
+    organizador_name: Faker::LeagueOfLegends.champion,
+    deporte_id: 3,
+    premio: "Una patada en el culo"
+  )
+end

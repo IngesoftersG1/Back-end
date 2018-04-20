@@ -20,8 +20,10 @@ class MensajesController < ApplicationController
   def create
     @mensaje = Mensaje.new(mensaje_params)
     if @mensaje.save
+      @user=User.find(@mensaje.usuario_2_name)
+      @sender= User.find(@mensaje.user_id)
       # Tell the User1Mailer to send a message incoming after save
-      User1Mailer.message_incoming(@mensaje.usuario_2_name).deliver_now
+      User1Mailer.message_incoming(@user, @sender).deliver_now
       render :show, status: :created, location: @mensaje
     else
       render json: @mensaje.errors, status: :unprocessable_entity

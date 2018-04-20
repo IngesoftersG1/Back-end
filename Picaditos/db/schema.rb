@@ -145,7 +145,6 @@ ActiveRecord::Schema.define(version: 20180417222128) do
     t.string "organizador_name"
     t.integer "ubicacion_id"
     t.string "nombre"
-    t.string "user_id"
     t.index ["deporte_id"], name: "index_torneos_on_deporte_id"
     t.index ["organizador_name"], name: "index_torneos_on_organizador_name"
     t.index ["ubicacion_id"], name: "index_torneos_on_ubicacion_id"

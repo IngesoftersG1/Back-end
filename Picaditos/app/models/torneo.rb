@@ -37,8 +37,11 @@ class Torneo < ApplicationRecord
     def self.searchByName(name)
       @torneo = Torneo.where("nombre LIKE ?","%#{name}%").select("nombre AS 'Nombre del torneo:', fecha AS 'Fecha de Realización:', premio AS 'Recompensa:', organizador_name AS 'Organizador:', calificacion AS 'Calificación de los usuarios:'").all.to_a
     end
-
-    
+  
+    #Buscar los torneos cuyo organizador es "organizador_name"
+    def self.searchByOrganizador(organizador_name)
+      @torneo = Torneo.where("organizador_name LIKE ?",organizador_name)
+    end
 
 
 

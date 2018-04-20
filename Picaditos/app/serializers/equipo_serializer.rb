@@ -1,5 +1,5 @@
 class EquipoSerializer < ActiveModel::Serializer
-  attributes :nombre, :nivel, :capitan_name, :deporte_id
+  attributes :nombre, :nivel, :capitan_name, :calificacion, :deporte_id
 
 
 end

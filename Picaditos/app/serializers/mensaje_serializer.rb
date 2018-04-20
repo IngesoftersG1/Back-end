@@ -1,3 +1,3 @@
 class MensajeSerializer < ActiveModel::Serializer
-  attributes :usuario_1_name, :usario_2_name, :asunto 
+  attributes :user_id, :usuario_2_name, :asunto, :contenido, :fecha 
 end
