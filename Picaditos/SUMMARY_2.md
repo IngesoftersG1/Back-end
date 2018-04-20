@@ -1,23 +1,17 @@
-# Summary 2 Back_end
+# Summary 3 Back_end
 
 ------FEATURES DESARROLLADOS-------
 
-* Gem annotate: Diego Fernando Chacon
+* Implementación de todas las queries para alguna funcionalidad en la aplicación: David Hormaza
 
-* Gem will paginate: Diego Fernando Chacon 
+* Autenticación completa usando tokens : Diego Fernando Chacón
 
-* Mailers: Esteban Peña 
+* 5 Mailers (todos truncados): Esteban Peña 
 
-* CORS: Esteban Peña 
+* Implementación de subida de archivos : Esteban Peña
 
-* queries:  Diego Fernando Chacon
+* Generación de reportes en formato pdf (wickedpdf) : David Hormaza, Esteban Peña y Diego Fernando Chacón
 
-* serializers:  Diego Fernando Chacon 
+* 2 Flujos completos: David Hormaza y Diego Fernando Chacón
 
-* authentication: Diego Fernando Chacon - Esteban Peña
-
-
-
-
-
-
+* Implementación de Sign In con Google usando google-token-id: Diego Fernando Chacón y David Hormaza
