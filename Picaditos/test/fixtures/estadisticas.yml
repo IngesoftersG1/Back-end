@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: estadisticas
+#
+#  id                 :integer          not null, primary key
+#  partidos_ganados   :integer
+#  partidos_perdidos  :integer
+#  partidos_empatados :integer
+#  puntos_ganados     :integer
+#  goles_anotados     :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  partidos_ganados: 1
+  partidos_perdidos: 1
+  partidos_empatados: 1
+  puntos_ganados: 1
+  goles_anotados: 1
+
+two:
+  partidos_ganados: 1
+  partidos_perdidos: 1
+  partidos_empatados: 1
+  puntos_ganados: 1
+  goles_anotados: 1

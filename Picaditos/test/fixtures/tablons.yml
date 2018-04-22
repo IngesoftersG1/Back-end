@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: tablons
+#
+#  id            :integer          not null, primary key
+#  titulo_tablon :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo_tablon: MyString
+
+two:
+  titulo_tablon: MyString
