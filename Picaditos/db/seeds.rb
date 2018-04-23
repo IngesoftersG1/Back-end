@@ -40,6 +40,7 @@ def seedTeams
     print("================= SeedingDB:  Creating other players for Team ",i," =======================\n")
     for j in 1..7 do
     user_name=Faker::LeagueOfLegends.champion
+    user = User.new
     user.user_name = user_name
     user.password = '1234567'
     user.password_confirmation = '1234567'

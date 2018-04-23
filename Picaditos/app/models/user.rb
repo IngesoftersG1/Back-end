@@ -50,9 +50,10 @@ class User < ApplicationRecord
       @user = User.where("calificacion >= ?",rating).limit(range).pluck(:user_name, :email, :calificacion)
     end
 
-    #Buscar todos los usuarios que estan en el equipo cuyo nombre es "team"
-    def self.searchUsersInATeam(team)
-      @user = User.joins(:equipos).where('nombre LIKE ?',team).pluck(:user_name, :email)
+    #Buscar todos los usuarios que estan en el equipo cuyo id es "id"
+    def self.searchUsersInATeam(id)
+      @user= User.joins("INNER JOIN equipos_users ON users.user_name = equipos_users.user_id AND equipo_id=2").length
+      
     end
 
     #Buscar los torneos en los que está el usuario cuyo username es "name"
@@ -69,6 +70,7 @@ class User < ApplicationRecord
     def self.searchAnnounces(name)
       @user = User.joins(:anuncios).where('user_name = ?',name).select("anuncios.tipo AS 'Tipo de Anuncio:',anuncios.fecha_inicio AS 'Fecha de inicio del Anuncio:',anuncios.fecha_fin AS 'Fecha de cierre del Anuncio:',anuncios.descripcion AS 'Anuncio:'").all.to_a
     end
+
 
     mount_uploader :picture, PictureUploader
 end
