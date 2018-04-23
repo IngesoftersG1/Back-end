@@ -52,7 +52,7 @@ class User < ApplicationRecord
 
     #Buscar todos los usuarios que estan en el equipo cuyo id es "id"
     def self.searchUsersInATeam(id)
-      @user= User.joins("INNER JOIN equipos_users ON users.user_name = equipos_users.user_id AND equipo_id=2").length
+      @user= User.joins("INNER JOIN equipos_users ON users.user_name = equipos_users.user_id AND equipo_id=id")
       
     end
 
