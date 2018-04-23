@@ -1,0 +1,2 @@
+class EquiposUsers < ApplicationRecord
+end

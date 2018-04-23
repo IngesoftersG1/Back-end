@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20180417222128) do
   end
 
   create_table "equipos_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.string "user_id", null: false
     t.integer "equipo_id", null: false
     t.index ["equipo_id"], name: "index_equipos_users_on_equipo_id"
     t.index ["user_id"], name: "index_equipos_users_on_user_id"
