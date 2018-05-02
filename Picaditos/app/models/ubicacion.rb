@@ -16,9 +16,8 @@ class Ubicacion < ApplicationRecord
     has_many :partidos
     has_many :torneos
     has_many :users
-    validates :calle_principal, presence: {with: true, message: "Ingrese la calle principal"}, format: { with: /\A[0-9]+\z/,    message: "Solo se permiten numeros" }##, length: { in: 1..3 }
-    validates :calle_secundaria, presence: {with: true, message: "Ingrese la calle secundaria"}, format: { with: /\A[0-9]+\z/,    message: "Solo se permiten numeros" }##, length: { in: 1..3 }
-    validates :ciudad, presence: {with: true, message: "Ingrese la ciudad"}
+    validates :calle_principal, presence: {with: true, message: "Ingrese la calle principal"}   
+    validates :calle_secundaria, presence: {with: true, message: "Ingrese la calle secundaria"} 
 
     #Queries
     #Buscar todos los torneos que se realizan en la ciudad "location"

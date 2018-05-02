@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "pdfs/show_deporte", to:  "pdfs#show_deporte"
   get "equipos/my_team", to: "equipos#my_team"
   get "torneos/my_tournaments", to: "torneos#my_tournaments"
+  get "canchas/canchas_disp", to: "canchas#canchas_disp"
   post 'user_sign_in/google', to: 'user_sign_in#googlesign'
   
   post 'user_token' => 'user_token#create'

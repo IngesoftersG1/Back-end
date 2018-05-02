@@ -140,11 +140,6 @@ def seedTablons
     Tablon.create(
     titulo_tablon: "Clasificados",
     )
-    
-  
-    
-    
-    
 end
 
 
@@ -176,7 +171,27 @@ def seedAnuncios
       
 end
 
+def seedCanchas
+  print("================= SeedingDB:  Creating Canchas =======================\n")
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 3,
+    ubicacion_id: 1,
+    user_id: 1,
+    nombre: "5 site"
+  )
+end
 
+def seedUbicacions
+  print("================= SeedingDB:  Creating Ubications =====================\n")
+  Ubicacion.create(
+    calle_principal: "4.630527",
+    calle_secundaria: "-74.126913",
+    localidad: "Kennedy",
+    ciudad: "Bogota"
+  )
+end
 
 seedTeams
 seedTorneos
@@ -184,3 +199,5 @@ seedDeportes
 seedAdmin
 seedTablons
 seedAnuncios
+seedCanchas
+seedUbicacions
