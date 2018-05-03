@@ -8,6 +8,11 @@ class EstadisticasController < ApplicationController
     render json: @estadisticas, status: :ok
   end
 
+  def my_stats
+    @user = User.find(params[:user_name])
+    @estadistica = Estadistica.searchUserStats(@user.user_name)
+    render json: @estadistica, status: :ok
+  end
   # GET /estadisticas/1
   # GET /estadisticas/1.json
   def show

@@ -16,5 +16,16 @@
 
 class Estadistica < ApplicationRecord
     belongs_to :imageable, polymorphic: true, optional: true
+    has_one :user
+    has_one :equipo
+
+
+    def self.searchUserStats(name)
+      @estadistica = Estadistica.where("user_id = ?",name).pluck(:partidos_ganados, :partidos_perdidos, :partidos_empatados, :goles_anotados)
+    end
+
 
 end
+
+
+#Queries

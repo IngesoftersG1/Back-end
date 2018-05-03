@@ -19,13 +19,13 @@ class UsersController < ApplicationController
   def show
     @user= set_user
     render json: @user, status: :ok
-   
+
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)   
+    @user = User.new(user_params)
     respond_to do |format|
       if @user.save
         # Tell the User1Mailer to send a welcome email after save
@@ -50,8 +50,8 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
-  
- 
+
+
 
   # DELETE /users/1
   # DELETE /users/1.json

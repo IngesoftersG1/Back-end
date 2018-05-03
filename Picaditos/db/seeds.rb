@@ -76,12 +76,12 @@ def seedTorneos
       deporte_id: ((i+1) % 3)+1,
       premio: "Una patada en el culo"
     )
-    
+
     print("================= SeedingDB:  Signing up Teams in Tournament ",(i+1)," =======================\n")
     for j in 1..4 do
     EquiposTorneos.create(
         equipo_id: j+(i*4),
-        torneo_id: i+1, 
+        torneo_id: i+1,
       )
     equipo=Equipo.find(j+(i*4))
     print("=== ",equipo.nombre," signed up in ",torneo_name," ===\n")
@@ -95,23 +95,23 @@ def seedDeportes
   Deporte.create(
     nombre: "Futbol",
     descripcion: "22 pelotas corriendo detras de otra",
-    min_jugadores: 11  
+    min_jugadores: 11
     )
-    
-    
+
+
     Deporte.create(
     nombre: "Microfutbol",
     descripcion: "10 pelotas corriendo detras de otra",
-    min_jugadores: 5  
+    min_jugadores: 5
     )
-    
-    
+
+
     Deporte.create(
     nombre: "Baloncesto",
     descripcion: "Deporte que requiere altura y melanina",
-    min_jugadores: 5  
+    min_jugadores: 5
     )
-    
+
 end
 
 def seedAdmin
@@ -123,7 +123,7 @@ def seedAdmin
   user.email =  'me@unal.edu.co'
   user.nombres = 'Ingesofters'
   user.apellidos = 'G'
-  user.admin = true 
+  user.admin = true
   user.fecha_nacimiento = Faker::Date.backward(23_725)
   user.telefono = Faker::PhoneNumber.subscriber_number
   user.ubicacion_id= Faker::Number.number(3)
@@ -135,16 +135,16 @@ def seedTablons
   Tablon.create(
     titulo_tablon: "Torneos",
     )
-    
-     
+
+
     Tablon.create(
     titulo_tablon: "Clasificados",
     )
-    
-  
-    
-    
-    
+
+
+
+
+
 end
 
 
@@ -156,7 +156,7 @@ def seedAnuncios
       enlace: Faker::Internet.url('picaditos.com'),
       fecha_inicio: Faker::Date.between(2.days.ago, Date.today),
       fecha_fin: (Date.today),
-      user_id: Faker::LeagueOfLegends.champion, 
+      user_id: Faker::LeagueOfLegends.champion,
       tablon_id: 2,
       descripcion: "----"
     )
@@ -168,16 +168,47 @@ def seedAnuncios
         enlace: Faker::Internet.url('picaditos.com'),
         fecha_inicio: Faker::Date.between(2.days.ago, Date.today),
         fecha_fin: (Date.today),
-        user_id: Faker::LeagueOfLegends.champion, 
+        user_id: Faker::LeagueOfLegends.champion,
         tablon_id: 1,
         descripcion: "----"
       )
       end
-      
+
+end
+
+def seedEstadisticas
+  print("================= SeedingDB:  Creating Estadisticas for jugadores =======================\n")
+  10.times do |row|
+    Estadistica.create(
+      user_id: Faker::LeagueOfLegends.champion,
+      partidos_ganados: Faker::Number.between(1, 10),
+      partidos_perdidos: Faker::Number.between(1, 10),
+      partidos_empatados: Faker::Number.between(1, 10),
+      goles_anotados: Faker::Number.between(1, 30)
+    )
+    end
+  print("================= SeedingDB:  Creating Estadisticas for equipos =======================\n")
+    for j in 1..4 do
+      Estadistica.create(
+        equipo_id: j,
+        partidos_ganados: Faker::Number.between(1, 10),
+        partidos_perdidos: Faker::Number.between(1, 10),
+        partidos_empatados: Faker::Number.between(1, 10),
+        goles_anotados: Faker::Number.between(1, 30)
+      )
+    end
+    Estadistica.create(
+      user_id: "David Eduardo",
+      partidos_ganados: Faker::Number.between(1, 10),
+      partidos_perdidos: Faker::Number.between(1, 10),
+      partidos_empatados: Faker::Number.between(1, 10),
+      goles_anotados: Faker::Number.between(1, 30)
+    )
+
 end
 
 
-
+seedEstadisticas
 seedTeams
 seedTorneos
 seedDeportes

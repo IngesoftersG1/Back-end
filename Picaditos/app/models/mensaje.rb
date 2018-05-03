@@ -27,6 +27,11 @@ class Mensaje < ApplicationRecord
     @mensaje = Mensaje.where("fecha >= ? AND fecha <= ? AND usuario_2_name LIKE ?", start,end_,origin).pluck(:fecha, :user_id, :usuario_2_name, :asunto, :contenido)
   end
 
+  def self.searchByReceptor(origin)
+    @mensaje = Mensaje.where("usuario_2_name LIKE ?", origin)
+  end
+
+
   #Buscar los mensajes cuyo asunto contiene la cadena "subject" en algun lugar
   def self.searchBySubject(subject)
     @mensaje = Mensaje.where("asunto LIKE ?", "%#{subject}%")
