@@ -55,7 +55,7 @@ class EquiposController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipo
-      @equipo = Equipo.find_by(nombre:params[:nombre], deporte_id:params[:deporte_id])
+      @equipo = Equipo.find_by(nombre:params[:nombre])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

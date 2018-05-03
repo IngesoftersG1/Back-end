@@ -73,6 +73,7 @@ def seedTorneos
       fecha: Faker::Date.between(2.days.ago, Date.today),
       nombre: Faker::RockBand.name,
       organizador_name: user_name,
+      user_id: user_name,
       deporte_id: ((i+1) % 3)+1,
       premio: "Una patada en el culo"
     )
