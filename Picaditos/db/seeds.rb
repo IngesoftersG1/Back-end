@@ -142,10 +142,6 @@ def seedTablons
     titulo_tablon: "Clasificados",
     )
 
-
-
-
-
 end
 
 
@@ -177,6 +173,116 @@ def seedAnuncios
 
 end
 
+def seedCanchas
+  print("================= SeedingDB:  Creating Canchas =======================\n")
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 3,
+    ubicacion_id: 1,
+    user_id: 1,
+    nombre: "5 site"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 4,
+    ubicacion_id: 2,
+    user_id: 2,
+    nombre: "Kick 5"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 4,
+    ubicacion_id: 3,
+    user_id: 3,
+    nombre: "Cancha La Carbonera"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 4,
+    ubicacion_id: 4,
+    user_id: 4,
+    nombre: "Campín 5"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 4,
+    ubicacion_id: 5,
+    user_id: 5,
+    nombre: "Fabian Vargas Indoor"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 4,
+    ubicacion_id: 6,
+    user_id: 6,
+    nombre: "Estadio 57"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 4,
+    ubicacion_id: 7,
+    user_id: 7,
+    nombre: "Fabian Vargas Indoor II"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 4,
+    ubicacion_id: 8,
+    user_id: 8,
+    nombre: "CANCHAS FUTBOL 5 Y 8 WEMBLEY"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 0,
+    ubicacion_id: 9,
+    user_id: 9,
+    nombre: "Cancha San Martin"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 5,
+    ubicacion_id: 10,
+    user_id: 10,
+    nombre: "Cancha de Fútbol UN"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 5,
+    ubicacion_id: 11,
+    user_id: 11,
+    nombre: "Cancha Nicolas de Federman"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 5,
+    ubicacion_id: 12,
+    user_id: 12,
+    nombre: "Cancha Micro Rafael Núñez"
+  )
+  
 def seedEstadisticas
   print("================= SeedingDB:  Creating Estadisticas for jugadores =======================\n")
   10.times do |row|
@@ -208,6 +314,92 @@ def seedEstadisticas
 
 end
 
+def seedUbicacions
+  print("================= SeedingDB:  Creating Ubications =====================\n")
+  Ubicacion.create(
+    calle_principal: "4.630527",
+    calle_secundaria: "-74.126913",
+    localidad: "Kennedy",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.636792",
+    calle_secundaria: "-74.063280",
+    localidad: "Chapinero",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.653351",
+    calle_secundaria: "-74.078599",
+    localidad: "Chapinero",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.652106",
+    calle_secundaria: "-74.077324",
+    localidad: "Chapinero",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.649956",
+    calle_secundaria: "-74.066264",
+    localidad: "Chapinero",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.642958",
+    calle_secundaria: "-74.061850",
+    localidad: "Chapinero",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.651593",
+    calle_secundaria: "-74.065312",
+    localidad: "Chapinero",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.636573",
+    calle_secundaria: "-74.097294",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.632764",
+    calle_secundaria: "-74.060959",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.643581",
+    calle_secundaria: "-74.084051",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.644992",
+    calle_secundaria: "-74.082948",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.643254",
+    calle_secundaria: "-74.088343",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+end
 
 seedEstadisticas
 seedTeams
@@ -216,3 +408,5 @@ seedDeportes
 seedAdmin
 seedTablons
 seedAnuncios
+seedCanchas
+seedUbicacions
