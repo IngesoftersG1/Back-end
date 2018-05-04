@@ -24,6 +24,16 @@ def seedTeams
     user.telefono = Faker::PhoneNumber.subscriber_number
     user.ubicacion_id= Faker::Number.number(3)
     user.save
+
+    print("================= SeedingDB:  Create statistics for users ",i," =======================\n")
+    Estadistica.create(
+      user_id: user_name,
+      partidos_ganados: Faker::Number.between(6, 8),
+      partidos_perdidos: Faker::Number.between(3, 5),
+      partidos_empatados: Faker::Number.between(3, 4),
+      goles_anotados: Faker::Number.between(11,17)
+    )
+
     EquiposUsers.create(
         user_id: user_name,
         equipo_id: i
@@ -56,6 +66,14 @@ def seedTeams
         user_id: user_name,
         equipo_id: i
       )
+    print("================= SeedingDB:  Create statistics for users ",i," =======================\n")
+    Estadistica.create(
+        user_id: user_name,
+        partidos_ganados: Faker::Number.between(6, 8),
+        partidos_perdidos: Faker::Number.between(3, 5),
+        partidos_empatados: Faker::Number.between(3, 4),
+        goles_anotados: Faker::Number.between(11,17)
+    )
     end
   end
 end
@@ -75,7 +93,7 @@ def seedTorneos
       organizador_name: user_name,
       user_id: user_name,
       deporte_id: ((i+1) % 3)+1,
-      premio: "Una patada en el culo"
+      premio: "Play Station 4"
     )
 
     print("================= SeedingDB:  Signing up Teams in Tournament ",(i+1)," =======================\n")
@@ -200,10 +218,10 @@ def seedEstadisticas
     end
     Estadistica.create(
       user_id: "David Eduardo",
-      partidos_ganados: Faker::Number.between(1, 10),
-      partidos_perdidos: Faker::Number.between(1, 10),
-      partidos_empatados: Faker::Number.between(1, 10),
-      goles_anotados: Faker::Number.between(1, 30)
+      partidos_ganados: 7,
+      partidos_perdidos: 4,
+      partidos_empatados: 3,
+      goles_anotados: 19
     )
 
 end
