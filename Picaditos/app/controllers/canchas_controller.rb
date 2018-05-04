@@ -42,6 +42,11 @@ class CanchasController < ApplicationController
   def destroy
     @cancha.destroy
   end
+  
+  def canchas_disp
+    @cancha = Cancha.searchIfAvailable(@cancha.disponibilidad)
+    render json: @cancha, status: :ok 
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
