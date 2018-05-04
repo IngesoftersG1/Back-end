@@ -282,6 +282,7 @@ def seedCanchas
     user_id: 12,
     nombre: "Cancha Micro Rafael Núñez"
   )
+end
   
 def seedEstadisticas
   print("================= SeedingDB:  Creating Estadisticas for jugadores =======================\n")
@@ -311,7 +312,6 @@ def seedEstadisticas
       partidos_empatados: Faker::Number.between(1, 10),
       goles_anotados: Faker::Number.between(1, 30)
     )
-
 end
 
 def seedUbicacions
