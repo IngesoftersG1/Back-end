@@ -245,6 +245,42 @@ def seedCanchas
     nombre: "CANCHAS FUTBOL 5 Y 8 WEMBLEY"
   )
   
+  Cancha.create(
+    disponibilidad: true,
+    precio: 150000,
+    calificacion: 0,
+    ubicacion_id: 9,
+    user_id: 9,
+    nombre: "Cancha San Martin"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 5,
+    ubicacion_id: 10,
+    user_id: 10,
+    nombre: "Cancha de Fútbol UN"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 5,
+    ubicacion_id: 11,
+    user_id: 11,
+    nombre: "Cancha Nicolas de Federman"
+  )
+  
+  Cancha.create(
+    disponibilidad: true,
+    precio: 20000,
+    calificacion: 5,
+    ubicacion_id: 12,
+    user_id: 12,
+    nombre: "Cancha Micro Rafael Núñez"
+  )
+  
 end
 
 def seedUbicacions
@@ -301,6 +337,34 @@ def seedUbicacions
   Ubicacion.create(
     calle_principal: "4.636573",
     calle_secundaria: "-74.097294",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.632764",
+    calle_secundaria: "-74.060959",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.643581",
+    calle_secundaria: "-74.084051",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.644992",
+    calle_secundaria: "-74.082948",
+    localidad: "Teusaquillo",
+    ciudad: "Bogotá"
+  )
+  
+  Ubicacion.create(
+    calle_principal: "4.643254",
+    calle_secundaria: "-74.088343",
     localidad: "Teusaquillo",
     ciudad: "Bogotá"
   )
