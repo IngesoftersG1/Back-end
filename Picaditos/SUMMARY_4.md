@@ -9,3 +9,5 @@
 * Edición de serializadores para implementar funcionalidades en front: Diego Chacón 
 
 * Creación de plantillas pdf para mostrar las estadísticas: Esteban Peña y David Hormaza
+
+LINK HEROKU: https://picaditosbe.herokuapp.com/
