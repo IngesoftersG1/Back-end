@@ -20,6 +20,9 @@
 #
 
 class User < ApplicationRecord
+    
+    before_create :confirmation_token
+    
     has_secure_password
     has_one :estadistica, as: :imageable
     has_many :anuncios
@@ -71,7 +74,19 @@ class User < ApplicationRecord
     def self.searchAnnounces(name)
       @user = User.joins(:anuncios).where('user_name = ?',name).select("anuncios.tipo AS 'Tipo de Anuncio:',anuncios.fecha_inicio AS 'Fecha de inicio del Anuncio:',anuncios.fecha_fin AS 'Fecha de cierre del Anuncio:',anuncios.descripcion AS 'Anuncio:'").all.to_a
     end
-
+    
+    private
+    def confirmation_token
+      if self.confirm_token.blank?
+        self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
+    end
+    
+    def email_activate
+      self.email_confirmed = true
+      self.confirm_token = nil
+      save!(:validate => false)
+    end
 
     mount_uploader :picture, PictureUploader
 end

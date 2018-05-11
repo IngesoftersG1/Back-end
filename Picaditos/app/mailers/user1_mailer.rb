@@ -1,5 +1,10 @@
 class User1Mailer < ApplicationMailer
  
+  def registration_confirmation(user)
+    @user = user
+    mail(to: @user.email, subject: 'Confirmacion de Registro!')
+  end
+  
   def welcome_email(user)
     @user = user
     @url  = 'https://calm-taiga-13065.herokuapp.com/'

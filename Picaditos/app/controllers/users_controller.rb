@@ -29,7 +29,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         # Tell the User1Mailer to send a welcome email after save
-        User1Mailer.welcome_email(@user).deliver_now
+        User1Mailer.registration_confirmation(@user).deliver_now
+        flash[:success] = "Por favor confirma tu dirección de correo electrónico para continuar."
+        redirect_to root_path
         format.html{redirect_to(@user, notice: 'El usuario fue creado correctamente.') }
         format.json {render json: @user, status: :created, location: @user}
       else
@@ -58,6 +60,25 @@ class UsersController < ApplicationController
   def destroy
     before_action :authenticate_user
     @user.destroy
+  end
+  
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
+  
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Bienvenido a Picaditos.com! Tu correo ha sido confirmado!
+      Por favor ingresa para continuar."
+      redirect_to signin_url
+    else
+      flash[:error] = "Lo sentimos. El usuario no existe"
+      redirect_to root_url
+    end
   end
 
     private

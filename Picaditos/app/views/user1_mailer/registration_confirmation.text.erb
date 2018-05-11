@@ -1,0 +1,7 @@
+Bienvenido a Picaditos.com, <%= @user.nombres %>.
+===============================================
+ 
+Gracias por registrarte en Picaditos.com,
+Para confirmar tu registro haz click en el siguiente enlace:
+ 
+<%= confirm_email_user_url(@user.confirm_token) %>
