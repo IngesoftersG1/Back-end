@@ -25,7 +25,7 @@ def seedTeams
     user.ubicacion_id= Faker::Number.number(3)
     user.save
 
-    print("================= SeedingDB:  Create statistics for users ",i," =======================\n")
+    print("================= SeedingDB:  Create statistics for user ",i," =======================\n")
     Estadistica.create(
       user_id: user_name,
       partidos_ganados: 7,
@@ -332,6 +332,31 @@ def seedEstadisticas
     )
 end
 
+def seedRequests
+  print("================= SeedingDB:  Creating Requests =======================\n")
+  for i in 0..4 do
+    Request.create(
+      user_id: Faker::LeagueOfLegends.champion,
+      equipo_id: i,
+      request_type: "User_to_equipo",
+      message: "Quiero unirme a tu equipo",
+      read: false
+    )
+    end
+    for i in 0..4 do
+      
+        Request.create(
+          equipo_id: i,
+          torneo_id: i,
+          request_type: "Equipo_to_torneo",
+          message: "Me quiero inscribir en tu torneo",
+          read: false
+        )
+      
+    end 
+end
+
+
 def seedUbicacions
   print("================= SeedingDB:  Creating Ubications =====================\n")
   Ubicacion.create(
@@ -428,3 +453,4 @@ seedTablons
 seedAnuncios
 seedCanchas
 seedUbicacions
+seedRequests

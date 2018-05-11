@@ -27,6 +27,7 @@ class User < ApplicationRecord
     has_many :mensajes
     has_many :torneos
     has_many :partidos
+    has_many :requests
     belongs_to :ubicacion, optional: true
     has_and_belongs_to_many :equipos, optional: true
     self.primary_key = "user_name"
