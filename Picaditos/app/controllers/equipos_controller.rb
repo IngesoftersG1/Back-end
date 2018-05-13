@@ -22,6 +22,12 @@ class EquiposController < ApplicationController
     render json: @equipo, status: :ok
   end
 
+  def get_id
+    @equipo = Equipo.find(params[:id])
+    render json: @equipo, status: :ok
+  
+  end
+
   # POST /equipos
   # POST /equipos.json
   def create
@@ -58,6 +64,7 @@ class EquiposController < ApplicationController
       @equipo = Equipo.find_by(nombre:params[:nombre])
     end
 
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipo_params
       params.permit(:id, 

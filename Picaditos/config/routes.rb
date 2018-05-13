@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post 'user_sign_in/google', to: 'user_sign_in#googlesign'
   get "estadisticas/my_stats", to: 'estadisticas#my_stats'
   get "mensajes/my_messages", to: "mensajes#my_messages"
+  get "equipos/equipo_id", to: "equipos#get_id"
+  get "torneos/torneo_id", to: "torneos#get_id"
+
   post 'user_token' => 'user_token#create'
   resources :ubicacions
   resources :torneos

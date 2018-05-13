@@ -16,7 +16,9 @@
 
 class Anuncio < ApplicationRecord
     belongs_to :tablon, optional: true
-    belongs_to :usuario, optional: true
+    belongs_to :user, optional: true
+    belongs_to :equipo, optional: true
+    belongs_to :torneo, optional: true
     validates :descripcion, presence: {with: true, message: "El cuerpo del anuncio no puede estar vacío"}
 
     #Queries
