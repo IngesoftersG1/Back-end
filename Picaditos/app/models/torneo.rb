@@ -43,6 +43,8 @@ class Torneo < ApplicationRecord
       @torneo = Torneo.where("organizador_name LIKE ?",organizador_name)
     end
 
-
+    def self.getNameById(id)
+      @torneo = Torneo.where("id = ?",id).select("nombre")
+    end
 
 end
