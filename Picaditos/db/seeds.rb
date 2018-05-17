@@ -438,6 +438,37 @@ def seedUbicacions
   )
 end
 
+def seedPartidos
+  print("================= SeedingDB:  Creating Partidos =======================\n")
+  for i in 1..6 do
+    Partido.create(
+      deporte_id: i%3,
+      ubicacion_id: i,
+      equipo_local_id: i,
+      equipo_visitante_id: i+5,
+      marcador_local: Faker::Number.between(0, 5),
+      marcador_visitante: Faker::Number.between(0, 5),
+      fecha: Faker::Date.between(2.days.ago, Date.today),
+      jugado: true
+    )
+  end
+
+  for i in 10..12 do
+  Partido.create(
+      deporte_id: i%3,
+      ubicacion_id: i,
+      equipo_local_id: i+1,
+      equipo_visitante_id: i-1,
+      marcador_local: 0,
+      marcador_visitante: 0,
+      fecha: Faker::Date.between(2.days.ago, Date.today),
+      jugado: false
+    )
+  end
+end
+
+
+
 seedEstadisticas
 seedTeams
 seedTorneos
@@ -447,3 +478,4 @@ seedTablons
 seedAnuncios
 seedCanchas
 seedUbicacions
+#seedPartidos
