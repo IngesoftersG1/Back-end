@@ -57,7 +57,13 @@ class EquiposController < ApplicationController
     @equipo = set_equipo,
     @equipo.destroy
   end
+  
+  def name_equipo
+    @equipo = Equipo.searchByName(params[:name])
+    render json: @equipo, status: :ok 
 
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipo

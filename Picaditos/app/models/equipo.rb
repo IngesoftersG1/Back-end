@@ -40,6 +40,11 @@ class Equipo < ApplicationRecord
       @equipo = Equipo.where("capitan_name LIKE ?","#{name}%").select("nombre,nivel,calificacion,capitan_name,deporte_id").all.to_a
     end
     
+     def self.searchByName(name)
+      @equipo = Equipo.where("nombre LIKE ?","%#{name}%")
+    end
+
+    
     #Buscar el equipo cuya calificación está entre el rango "min" y "max" y compite en el deporte "sport"
     def self.searchByQualification(min,max,sport)
       @equipo = Equipo.joins(:deporte).where("calificacion >= ? AND calificacion <= ? AND deportes.nombre = ?",min,max,sport).pluck(:nombre)

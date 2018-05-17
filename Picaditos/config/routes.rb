@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "torneos/my_tournaments", to: "torneos#my_tournaments"
   get "torneos/search", to:  "torneos#name_tournaments"
   get "canchas/canchas_disp", to: "canchas#canchas_disp"
+  get "anuncios/search_name", to: "anuncios#search_name"
+   get "equipos/search_name", to: "equipos#name_equipo"
   post 'user_sign_in/google', to: 'user_sign_in#googlesign'
   get "estadisticas/my_stats", to: 'estadisticas#my_stats'
   get "mensajes/my_messages", to: "mensajes#my_messages"
