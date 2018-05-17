@@ -36,6 +36,10 @@ class Mensaje < ApplicationRecord
   def self.searchBySubject(subject)
     @mensaje = Mensaje.where("asunto LIKE ?", "%#{subject}%")
   end
+  
+  def self.unreadMessages(user_name)
+    @mensaje= Mensaje.where('usuario_2_name = ? AND read = ?',name,false).length
+  end
 
 
 end
