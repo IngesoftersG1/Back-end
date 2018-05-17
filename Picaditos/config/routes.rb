@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :requests
   #root :to => 'users#index'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   get "pdfs/show_estadistica", to:  "pdfs#show_estadistica"
   get "equipos/my_team", to: "equipos#my_team"
   get "torneos/my_tournaments", to: "torneos#my_tournaments"
+  get "torneos/search", to:  "torneos#name_tournaments"
   get "canchas/canchas_disp", to: "canchas#canchas_disp"
   post 'user_sign_in/google', to: 'user_sign_in#googlesign'
   get "estadisticas/my_stats", to: 'estadisticas#my_stats'

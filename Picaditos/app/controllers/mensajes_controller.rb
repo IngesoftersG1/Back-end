@@ -11,7 +11,7 @@ class MensajesController < ApplicationController
   def my_messages
     @user = User.find(params[:user_name])
     @mensajes = Mensaje.searchByReceptor(@user.user_name)
-    render json: @mensaje, status: :ok
+    render json: @mensajes, status: :ok
   end
   # GET /mensajes/1
   # GET /mensajes/1.json

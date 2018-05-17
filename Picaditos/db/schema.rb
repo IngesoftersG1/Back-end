@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517032058) do
+
+ActiveRecord::Schema.define(version: 20180513051115) do
+
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(version: 20180517032058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "usuario_2_name"
+    t.boolean "read"
     t.index ["user_id"], name: "index_mensajes_on_user_id"
     t.index ["usuario_2_name"], name: "index_mensajes_on_usuario_2_name"
   end
@@ -130,8 +133,20 @@ ActiveRecord::Schema.define(version: 20180517032058) do
     t.integer "marcador_local"
     t.integer "marcador_visitante"
     t.boolean "jugado"
+
     t.index ["deporte_id"], name: "index_partidos_on_deporte_id"
     t.index ["ubicacion_id"], name: "index_partidos_on_ubicacion_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "equipo_id"
+    t.integer "torneo_id"
+    t.string "request_type"
+    t.boolean "read"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tablons", force: :cascade do |t|
@@ -180,6 +195,7 @@ ActiveRecord::Schema.define(version: 20180517032058) do
     t.string "password_digest"
     t.boolean "admin"
     t.string "picture"
+    t.boolean "confirmed"
     t.index ["ubicacion_id"], name: "index_users_on_ubicacion_id"
   end
 
