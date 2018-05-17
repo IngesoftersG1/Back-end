@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180513051115) do
+
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -123,16 +125,17 @@ ActiveRecord::Schema.define(version: 20180513051115) do
   create_table "partidos", force: :cascade do |t|
     t.date "fecha"
     t.integer "ubicacion_id"
-    t.integer "equipo_id"
     t.integer "deporte_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "played"
+    t.integer "equipo_local_id"
+    t.integer "equipo_visitante_id"
+    t.integer "marcador_local"
+    t.integer "marcador_visitante"
+    t.boolean "jugado"
+
     t.index ["deporte_id"], name: "index_partidos_on_deporte_id"
-    t.index ["equipo_id"], name: "index_partidos_on_equipo_id"
     t.index ["ubicacion_id"], name: "index_partidos_on_ubicacion_id"
-    t.index ["user_id"], name: "index_partidos_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
