@@ -10,17 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180511155931) do
+=======
+ActiveRecord::Schema.define(version: 20180513051115) do
+>>>>>>> 6c033d5bfcf296a0353a9194096dda32e5749cb6
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
+    t.integer "equipo_id"
+    t.string "user_id"
+    t.integer "torneo_id"
     t.string "enlace"
     t.date "fecha_inicio"
     t.date "fecha_fin"
     t.text "descripcion"
+    t.text "titulo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_id"
     t.integer "tablon_id"
     t.index ["tablon_id"], name: "index_anuncios_on_tablon_id"
     t.index ["user_id"], name: "index_anuncios_on_user_id"
@@ -101,6 +108,7 @@ ActiveRecord::Schema.define(version: 20180511155931) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
   end
 
   create_table "mensajes", force: :cascade do |t|

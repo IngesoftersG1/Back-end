@@ -152,40 +152,59 @@ end
 def seedTablons
   print("================= SeedingDB:  Creating tablons =======================\n")
   Tablon.create(
-    titulo_tablon: "Torneos",
+    titulo_tablon: "User_busca_equipo",
     )
 
 
     Tablon.create(
-    titulo_tablon: "Clasificados",
+    titulo_tablon: "Torneo_busca_equipo",
     )
-
+    
+    Tablon.create(
+      titulo_tablon: "Equipo_busca_jugador",
+      )
+    
 end
 
 
 def seedAnuncios
   print("================= SeedingDB:  Creating Anuncios =======================\n")
   5.times do |row|
+    user_name = Faker::LeagueOfLegends.champion
+    desc = (user_name+" busca equipo")
     Anuncio.create(
-      tipo: "Clasificado",
+      titulo: "Quiero jugar",
+      tipo: "User_busca_equipo",
       enlace: Faker::Internet.url('picaditos.com'),
       fecha_inicio: Faker::Date.between(2.days.ago, Date.today),
       fecha_fin: (Date.today),
-      user_id: Faker::LeagueOfLegends.champion,
-      tablon_id: 2,
-      descripcion: "----"
+      user_id: user_name,
+      tablon_id: 1,
+      descripcion: desc
     )
     end
-
-    5.times do |row|
+    for j in 1..4 do
       Anuncio.create(
-        tipo: "Torneo",
+        titulo: "Gran Torneo",
+        tipo: "Torneo_busca_equipo",
         enlace: Faker::Internet.url('picaditos.com'),
         fecha_inicio: Faker::Date.between(2.days.ago, Date.today),
         fecha_fin: (Date.today),
-        user_id: Faker::LeagueOfLegends.champion,
-        tablon_id: 1,
-        descripcion: "----"
+        torneo_id: j,
+        tablon_id: 2,
+        descripcion: "Inscribete a un torneo"
+      )
+      end
+      for j in 1..4 do
+      Anuncio.create(
+        titulo: "Busco jugador",
+        tipo: "Equipo_busca_jugador",
+        enlace: Faker::Internet.url('picaditos.com'),
+        fecha_inicio: Faker::Date.between(2.days.ago, Date.today),
+        fecha_fin: (Date.today),
+        equipo_id: j,
+        tablon_id: 3,
+        descripcion: "¡Unete a mi equipo!"
       )
       end
 
