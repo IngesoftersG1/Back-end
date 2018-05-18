@@ -28,5 +28,6 @@ module Picaditos
       end
     end
     
+    config.active_job.queue_adapter = :sidekiq
   end
 end

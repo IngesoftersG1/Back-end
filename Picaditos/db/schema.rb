@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517032058) do
+ActiveRecord::Schema.define(version: 20180517225652) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -40,6 +40,21 @@ ActiveRecord::Schema.define(version: 20180517032058) do
     t.string "nombre"
     t.index ["ubicacion_id"], name: "index_canchas_on_ubicacion_id"
     t.index ["user_id"], name: "index_canchas_on_user_id"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "deportes", force: :cascade do |t|
@@ -163,7 +178,6 @@ ActiveRecord::Schema.define(version: 20180517032058) do
     t.string "organizador_name"
     t.integer "ubicacion_id"
     t.string "nombre"
-    t.string "user_id"
     t.index ["deporte_id"], name: "index_torneos_on_deporte_id"
     t.index ["organizador_name"], name: "index_torneos_on_organizador_name"
     t.index ["ubicacion_id"], name: "index_torneos_on_ubicacion_id"
@@ -193,7 +207,8 @@ ActiveRecord::Schema.define(version: 20180517032058) do
     t.string "password_digest"
     t.boolean "admin"
     t.string "picture"
-    t.boolean "confirmed"
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
     t.index ["ubicacion_id"], name: "index_users_on_ubicacion_id"
   end
 

@@ -56,7 +56,7 @@ class TorneosController < ApplicationController
   def my_tournaments
     @user = User.find(params[:user_name])
     @torneo = Torneo.searchByOrganizador(@user.user_name)
-    render json: @equipo, status: :ok
+    render json: @torneo, status: :ok
   end
 
   def name_tournaments

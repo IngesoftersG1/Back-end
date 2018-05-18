@@ -49,6 +49,12 @@ class AnunciosController < ApplicationController
   def destroy
     @anuncio.destroy
   end
+  
+  def search_name
+    @anuncio = Anuncio.searchByName(params[:name])
+    render json: @anuncio, status: :ok 
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
