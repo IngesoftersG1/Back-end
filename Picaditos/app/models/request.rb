@@ -6,5 +6,8 @@ class Request < ApplicationRecord
     def self.pendingRequests(equipo_id)
     @request= Request.where('request_type = ? AND equipo_id = ?' ,"User_to_equipo", equipo_id).length
   end
-
+    
+    def self.requestsForEquipo(equipo_id)
+    @request= Request.where('request_type = ? AND equipo_id = ?' ,"User_to_equipo", equipo_id)
+  end
 end
