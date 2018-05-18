@@ -38,7 +38,7 @@ class Mensaje < ApplicationRecord
   end
   
   def self.unreadMessages(user_name)
-    @mensaje= Mensaje.where('usuario_2_name = ? AND read = ?',name,false).length
+    @mensaje= Mensaje.where('usuario_2_name = ? AND read = ?',user_name,false).length
   end
 
 
