@@ -1,4 +1,4 @@
-class EquiposUserssController < ApplicationController
+class EquiposUsersController < ApplicationController
   
 
   # GET /equipos
@@ -16,7 +16,7 @@ class EquiposUserssController < ApplicationController
     @equipo_users = EquiposUsers.new(equipos_users_params)
 
     if @equipo_users.save
-      render :show, status: :created, location: @equipo_users
+      
     else
       render json: @equipo_users.errors, status: :unprocessable_entity
     end
