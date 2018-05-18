@@ -18,7 +18,11 @@ class TorneosController < ApplicationController
   def get_id
     @torneo = Torneo.find(params[:id])
     render json: @torneo, status: :ok
-  
+  end
+
+  def numTournaments
+    @torneo = Torneo.countTournaments()
+    render json: @torneo, status: :ok
   end
 
   # POST /torneos
@@ -57,7 +61,7 @@ class TorneosController < ApplicationController
 
   def name_tournaments
     @torneo = Torneo.searchByName(params[:name])
-    render json: @torneo, status: :ok 
+    render json: @torneo, status: :ok
 
   end
 
@@ -67,7 +71,7 @@ class TorneosController < ApplicationController
     def set_torneo
       @torneo = Torneo.find_by(nombre: params[:nombre])
     end
-    
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def torneo_params
       params.permit( :fecha,

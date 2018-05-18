@@ -15,14 +15,19 @@
 class Partido < ApplicationRecord
   belongs_to :ubicacion, optional: true
   belongs_to :deporte, optional: true
-  
-  
+
+
   validates :fecha, presence: {with: true, message: "Ingrese la fecha"}
 
   #Queries
   #Bucar los partidos que se realizaran entre un rango de fechas "start" y "end_"
   def self.searchByDate(start,end_)
     @partido = Partido.where("fecha >= ? AND fecha <= ?",start,end_).pluck(:id, :fecha)
+  end
+
+  #Numero de partidos disputados
+  def self.playedMatches()
+    @partido = Partido.where("jugado LIKE ?",true).count
   end
 
   #Bucar los partidos que se realizaran entre un rango de fechas "start" y "end_" y que son del deporte cuyo id es "sport_id"

@@ -22,6 +22,11 @@ class Anuncio < ApplicationRecord
     validates :descripcion, presence: {with: true, message: "El cuerpo del anuncio no puede estar vacío"}
 
     #Queries
+    #Numero de anuncios publicados
+    def self.countAnnounces()
+        @anuncio=Anuncio.count
+    end
+
     #Buscar los anuncios que están en el tablón cuyo id es "id"
     def self.searchByTablon(id)
         @anuncio=Anuncio.where("tablon_id = ?", id).pluck(:tipo,:descripcion,:fecha_inicio,:fecha_fin)

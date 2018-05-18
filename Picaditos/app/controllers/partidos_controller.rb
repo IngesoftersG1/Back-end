@@ -15,6 +15,11 @@ class PartidosController < ApplicationController
     render json: @partido, status: :ok
   end
 
+  def numMatches
+    @partido= Partido.playedMatches()
+    render json: @partido, status: :ok
+  end
+
   # POST /partidos
   # POST /partidos.json
   def create

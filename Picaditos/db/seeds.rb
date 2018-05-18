@@ -159,11 +159,11 @@ def seedTablons
     Tablon.create(
     titulo_tablon: "Torneo_busca_equipo",
     )
-    
+
     Tablon.create(
       titulo_tablon: "Equipo_busca_jugador",
       )
-    
+
 end
 
 
@@ -276,7 +276,7 @@ def seedCanchas
   )
 
   Cancha.create(
-    disponibilidad: true,
+    disponibilidad: false,
     precio: 150000,
     calificacion: 4,
     ubicacion_id: 8,
@@ -285,7 +285,7 @@ def seedCanchas
   )
 
   Cancha.create(
-    disponibilidad: true,
+    disponibilidad: false,
     precio: 150000,
     calificacion: 0,
     ubicacion_id: 9,
@@ -294,7 +294,7 @@ def seedCanchas
   )
 
   Cancha.create(
-    disponibilidad: true,
+    disponibilidad: false,
     precio: 20000,
     calificacion: 5,
     ubicacion_id: 10,
@@ -303,7 +303,7 @@ def seedCanchas
   )
 
   Cancha.create(
-    disponibilidad: true,
+    disponibilidad: false,
     precio: 20000,
     calificacion: 5,
     ubicacion_id: 11,
@@ -312,7 +312,7 @@ def seedCanchas
   )
 
   Cancha.create(
-    disponibilidad: true,
+    disponibilidad: false,
     precio: 20000,
     calificacion: 5,
     ubicacion_id: 12,
@@ -363,7 +363,7 @@ def seedRequests
     )
     end
     for i in 0..4 do
-      
+
         Request.create(
           equipo_id: i,
           torneo_id: i,
@@ -371,8 +371,8 @@ def seedRequests
           message: "Me quiero inscribir en tu torneo",
           read: false
         )
-      
-    end 
+
+    end
 end
 
 
@@ -505,4 +505,3 @@ seedCanchas
 seedUbicacions
 seedPartidos
 seedRequests
-

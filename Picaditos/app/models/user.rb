@@ -54,7 +54,7 @@ class User < ApplicationRecord
     #Buscar todos los usuarios que estan en el equipo cuyo id es "id"
     def self.searchUsersInATeam(id)
       @user= User.joins("INNER JOIN equipos_users ON users.user_name = equipos_users.user_id AND equipo_id=id")
-      
+
     end
 
     #Buscar los torneos en los que está el usuario cuyo username es "name"
@@ -70,6 +70,10 @@ class User < ApplicationRecord
     #Buscar los anuncios que ha publicado el usuario cuyo username es "name"
     def self.searchAnnounces(name)
       @user = User.joins(:anuncios).where('user_name = ?',name).select("anuncios.tipo AS 'Tipo de Anuncio:',anuncios.fecha_inicio AS 'Fecha de inicio del Anuncio:',anuncios.fecha_fin AS 'Fecha de cierre del Anuncio:',anuncios.descripcion AS 'Anuncio:'").all.to_a
+    end
+
+    def self.countUsers()
+      @user = User.count
     end
 
 

@@ -51,7 +51,10 @@ class UsersController < ApplicationController
     end
   end
 
-
+  def numUsers
+    @user = User.countUsers()
+    render json: @user, status: :ok
+  end
 
   # DELETE /users/1
   # DELETE /users/1.json

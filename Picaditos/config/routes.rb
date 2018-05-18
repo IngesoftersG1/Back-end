@@ -26,6 +26,16 @@ Rails.application.routes.draw do
   get "equipos/equipo_id", to: "equipos#get_id"
   get "torneos/torneo_id", to: "torneos#get_id"
 
+  #grafico admin
+  get "users/num_users", to: "users#numUsers"
+  get "anuncios/num_announces", to: "anuncios#numAnnounces"
+  get "canchas/num_canchas", to: "canchas#numFields"
+  get "canchas/num_canchas_dispo", to: "canchas#numFieldsAvailable"
+  get "equipos/num_equipos", to: "equipos#numTeams"
+  get "partidos/num_matches", to: "partidos#numMatches"
+  get "torneos/num_tournaments", to: "torneos#numTournaments"
+
+
   post 'user_token' => 'user_token#create'
   resources :ubicacions
   resources :torneos

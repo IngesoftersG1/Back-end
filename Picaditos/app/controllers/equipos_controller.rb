@@ -8,13 +8,18 @@ class EquiposController < ApplicationController
     @equipos = Equipo.all
     render json: @equipos, status: :ok
   end
-  
+
   def my_team
     @user = User.find(params[:user_name])
     @equipo = Equipo.searchByCaptain(@user.user_name)
+    render json: @equipo, status: :ok
+  end
+
+  def numTeams
+    @equipo = Equipo.countTeams()
     render json: @equipo, status: :ok 
   end
-  
+
   # GET /equipos/1
   # GET /equipos/1.json
   def show
@@ -25,7 +30,7 @@ class EquiposController < ApplicationController
   def get_id
     @equipo = Equipo.find(params[:id])
     render json: @equipo, status: :ok
-  
+
   end
 
   # POST /equipos
@@ -64,10 +69,10 @@ class EquiposController < ApplicationController
       @equipo = Equipo.find_by(nombre:params[:nombre])
     end
 
-    
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipo_params
-      params.permit(:id, 
+      params.permit(:id,
       :nombre,
       :nivel,
       :deporte_id,
