@@ -39,7 +39,7 @@ class MensajesController < ApplicationController
   # PATCH/PUT /mensajes/1.json
   def update
     if @mensaje.update(mensaje_params)
-      render :show, status: :ok, location: @mensaje
+      
     else
       render json: @mensaje.errors, status: :unprocessable_entity
     end
