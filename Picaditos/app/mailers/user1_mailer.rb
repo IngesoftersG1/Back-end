@@ -2,8 +2,8 @@ class User1Mailer < ApplicationMailer
  
   def welcome_email(user)
     @user = user
-    @url  = 'https://calm-taiga-13065.herokuapp.com/'
-    mail(to: @user.email, subject: 'Gracias por registrarte!')
+    @url  = 'https://front-end-project-daeperdomocr.c9users.io/confirmateuser@tokennumbers/'+user.user_name
+    mail(to: @user.email, subject: 'Gracias por registrarte! por favor verifica tu email')
   end
   
   def password_email(user)
