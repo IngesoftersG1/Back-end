@@ -31,6 +31,10 @@ class Anuncio < ApplicationRecord
     def self.searchByStartDate(start,end_)
         @anuncio = Anuncio.where("fecha_inicio >= ? AND fecha_inicio <= ?",start,end_).pluck(:tipo, :descripcion, :fecha_inicio, :fecha_fin)
     end
+    
+    def self.searchByName(name)
+        @anuncio = Anuncio.where("titulo LIKE ?","%#{name}%")
+    end
 
     #Buscar los anuncios cuya fecha de finalización está entre "start" y "end_"
     def self.searchByEndDate(start,end_)

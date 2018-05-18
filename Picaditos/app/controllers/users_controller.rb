@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user = Usuario.find params[:user_name]
     if @user.update(user_params)
       # Tell the User1Mailer to send a password email after save
       User1Mailer.password_email(@user).deliver_now
@@ -78,7 +79,8 @@ class UsersController < ApplicationController
       :page,
       :password,
       :password_confirmation,
-      :picture
+      :picture,
+      :confirmed
       )
     end
 end
