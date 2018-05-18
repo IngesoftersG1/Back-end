@@ -42,11 +42,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    @user = Usuario.find params[:user_name]
+    @user = User.find(params[:user_name])
     if @user.update(user_params)
       # Tell the User1Mailer to send a password email after save
-      User1Mailer.password_email(@user).deliver_now
-      render :show, status: :ok, location: @user
+      # User1Mailer.password_email(@user).deliver_now
+      render status: :ok
     else
       render json: @user.errors, status: :unprocessable_entity
     end
