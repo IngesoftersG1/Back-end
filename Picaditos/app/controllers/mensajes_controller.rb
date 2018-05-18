@@ -63,7 +63,8 @@ class MensajesController < ApplicationController
       :user_id,
       :usuario_2_name,
       :fecha,
-      :asunto
+      :asunto,
+      :read
       )
     end
 end

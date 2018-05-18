@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
 
     if @request.save
-      render :show, status: :created, location: @request
+      
     else
       render json: @request.errors, status: :unprocessable_entity
     end
@@ -38,6 +38,7 @@ class RequestsController < ApplicationController
   # DELETE /requests/1
   # DELETE /requests/1.json
   def destroy
+    @request = (set_request)
     @request.destroy
   end
 
@@ -50,9 +51,10 @@ class RequestsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
       params.permit(:request_type,
-        :user_name,
-        :torneo_name,
-        :equipo_name 
+        :user_id,
+        :equipo_id,
+        :torneo_id,
+        :message 
         )
     end
 end
