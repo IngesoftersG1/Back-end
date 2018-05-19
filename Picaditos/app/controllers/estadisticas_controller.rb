@@ -1,8 +1,8 @@
 class EstadisticasController < ApplicationController
   before_action :set_estadistica, only: [:show, :update, :destroy]
+
+
   
-  
-  I18n.locale = :eo
 
   # GET /estadisticas
   # GET /estadisticas.json

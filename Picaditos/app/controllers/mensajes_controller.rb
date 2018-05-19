@@ -28,8 +28,8 @@ class MensajesController < ApplicationController
       @user=User.find(@mensaje.usuario_2_name)
       @sender= User.find(@mensaje.user_id)
       # Tell the User1Mailer to send a message incoming after save
-      User1Mailer.message_incoming(@user, @sender).deliver_now
-      render :show, status: :created, location: @mensaje
+      #User1Mailer.message_incoming(@user, @sender).deliver_now
+      #render :show, status: :created, location: @mensaje
     else
       render json: @mensaje.errors, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class MensajesController < ApplicationController
   # PATCH/PUT /mensajes/1.json
   def update
     if @mensaje.update(mensaje_params)
-      
+
     else
       render json: @mensaje.errors, status: :unprocessable_entity
     end
