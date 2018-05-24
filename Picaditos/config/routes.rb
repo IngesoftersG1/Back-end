@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get "equipos/num_equipos", to: "equipos#numTeams"
   get "partidos/num_matches", to: "partidos#numMatches"
   get "torneos/num_tournaments", to: "torneos#numTournaments"
-
+  get "equipos/equipo_deporte", to: "equipos#equipo_deporte"
 
   post 'user_token' => 'user_token#create'
   resources :ubicacions
@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   resources :equipos
   resources :items
   resources :equipos_users
+  resources :equipos_torneos
   #resources :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

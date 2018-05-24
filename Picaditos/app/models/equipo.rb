@@ -59,4 +59,9 @@ class Equipo < ApplicationRecord
       @equipo = Equipo.where("id = ?",id).select("nombre")
     end
 
+    def self.getEquipoByCapitanAndDeporte(cap, dep)
+      @equipo = Equipo.where("capitan_name = ? AND deporte_id = ?",cap,dep)
+    end
+
+
 end
