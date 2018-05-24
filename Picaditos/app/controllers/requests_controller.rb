@@ -11,6 +11,8 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
+    @request = (set_request)
+    render json: @request, status: :ok
   end
 
   # POST /requests

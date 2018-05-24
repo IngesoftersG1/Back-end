@@ -37,7 +37,7 @@ class EquipoSerializer < ActiveModel::Serializer
   
   
   def solicitudes_pendientes
-     solicitudes_pendientes= Request.pendingRequests(object.id)
+     solicitudes_pendientes= Request.pendingRequestsEq(object.id)
      
      return solicitudes_pendientes
   

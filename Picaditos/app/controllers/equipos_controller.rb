@@ -68,7 +68,11 @@ class EquiposController < ApplicationController
     render json: @equipo, status: :ok 
 
   end
-  
+  def equipo_deporte
+    @equipo = Equipo.getEquipoByCapitanAndDeporte(params[:capitan_name],params[:deporte_id])
+    render json: @equipo, status: :ok 
+
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipo
