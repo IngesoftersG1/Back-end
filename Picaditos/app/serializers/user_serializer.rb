@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :nombres, :apellidos, :user_name, :email, :admin, :mensajes_sin_leer
+  attributes :nombres, :apellidos, :user_name, :email, :admin, :mensajes_sin_leer, :confirmed
   
   has_many :equipos
   has_many :torneos
