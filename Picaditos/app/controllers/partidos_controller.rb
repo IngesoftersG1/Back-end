@@ -26,7 +26,7 @@ class PartidosController < ApplicationController
     @partido = Partido.new(partido_params)
 
     if @partido.save
-      render :show, status: :created, location: @partido
+      
     else
       render json: @partido.errors, status: :unprocessable_entity
     end
@@ -60,12 +60,13 @@ class PartidosController < ApplicationController
       :deporte_id,
       :usuario_id,
       :ubicacion_id,
-      :equipo_id,
       :pending,
       :jugado,
       :pending_equipo,
       :marcador_local,
-      :marcador_visitante
+      :marcador_visitante,
+      :equipo_local_id, 
+      :equipo_visitante_id
       )
     end
 end

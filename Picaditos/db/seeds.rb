@@ -482,10 +482,11 @@ def seedPartidos
       ubicacion_id: i,
       equipo_local_id: i,
       equipo_visitante_id: i+5,
-      marcador_local: Faker::Number.between(0, 5),
-      marcador_visitante: Faker::Number.between(0, 5),
+      marcador_local: 0,
+      marcador_visitante: 0,
       fecha: Faker::Date.between(2.days.ago, Date.today),
-      jugado: false
+      jugado: false,
+      pending: false 
     )
   end
 
@@ -495,10 +496,11 @@ def seedPartidos
       ubicacion_id: i,
       equipo_local_id: i+1,
       equipo_visitante_id: i-1,
-      marcador_local: 0,
-      marcador_visitante: 0,
+      marcador_local: Faker::Number.between(0, 5),
+      marcador_visitante: Faker::Number.between(0, 5),
       fecha: Faker::Date.between(2.days.ago, Date.today),
-      jugado: true
+      jugado: true,
+      pending: false
     )
   end
   
