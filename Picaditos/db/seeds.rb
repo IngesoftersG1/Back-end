@@ -485,7 +485,7 @@ def seedPartidos
       marcador_local: Faker::Number.between(0, 5),
       marcador_visitante: Faker::Number.between(0, 5),
       fecha: Faker::Date.between(2.days.ago, Date.today),
-      jugado: true
+      jugado: false
     )
   end
 
@@ -498,7 +498,7 @@ def seedPartidos
       marcador_local: 0,
       marcador_visitante: 0,
       fecha: Faker::Date.between(2.days.ago, Date.today),
-      jugado: false
+      jugado: true
     )
   end
 end
@@ -514,5 +514,5 @@ end
 # seedAnuncios
 # seedCanchas
 # seedUbicacions
-# seedPartidos
-seedRequests
+seedPartidos
+# seedRequests

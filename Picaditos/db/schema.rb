@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525000837) do
+ActiveRecord::Schema.define(version: 20180525025637) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -132,6 +132,9 @@ ActiveRecord::Schema.define(version: 20180525000837) do
     t.integer "marcador_local"
     t.integer "marcador_visitante"
     t.boolean "jugado"
+    t.boolean "pending"
+    t.integer "torneo_id"
+    t.integer "pending_equipo"
     t.index ["deporte_id"], name: "index_partidos_on_deporte_id"
     t.index ["ubicacion_id"], name: "index_partidos_on_ubicacion_id"
   end
@@ -148,6 +151,7 @@ ActiveRecord::Schema.define(version: 20180525000837) do
     t.date "fecha_partido"
     t.integer "ubicacion_id"
     t.integer "equipo_partido_id"
+    t.integer "partido_id"
   end
 
   create_table "tablons", force: :cascade do |t|

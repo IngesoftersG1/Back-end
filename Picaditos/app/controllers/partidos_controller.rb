@@ -36,7 +36,7 @@ class PartidosController < ApplicationController
   # PATCH/PUT /partidos/1.json
   def update
     if @partido.update(partido_params)
-      render :show, status: :ok, location: @partido
+      
     else
       render json: @partido.errors, status: :unprocessable_entity
     end
@@ -60,7 +60,12 @@ class PartidosController < ApplicationController
       :deporte_id,
       :usuario_id,
       :ubicacion_id,
-      :equipo_id
+      :equipo_id,
+      :pending,
+      :jugado,
+      :pending_equipo,
+      :marcador_local,
+      :marcador_visitante
       )
     end
 end
