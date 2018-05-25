@@ -2,6 +2,7 @@ class Request < ApplicationRecord
     belongs_to :user, optional: true
     belongs_to :equipo, optional: true
     belongs_to :torneo, optional: true
+    belongs_to :ubicacion, optional: true
 
     def self.pendingRequestsEq(equipo_id)
     @request= Request.where('request_type = ? AND equipo_id = ?' ,"User_to_equipo", equipo_id).length

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517032058) do
+ActiveRecord::Schema.define(version: 20180525000837) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
@@ -145,6 +145,9 @@ ActiveRecord::Schema.define(version: 20180517032058) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fecha_partido"
+    t.integer "ubicacion_id"
+    t.integer "equipo_partido_id"
   end
 
   create_table "tablons", force: :cascade do |t|

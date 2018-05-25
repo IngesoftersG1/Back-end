@@ -353,7 +353,7 @@ end
 
 def seedRequests
   print("================= SeedingDB:  Creating Requests =======================\n")
-  for i in 0..4 do
+  for i in 1..4 do
     Request.create(
       user_id: Faker::LeagueOfLegends.champion,
       equipo_id: i,
@@ -362,7 +362,7 @@ def seedRequests
       read: false
     )
     end
-    for i in 0..4 do
+    for i in 1..4 do
 
         Request.create(
           equipo_id: i,
@@ -371,8 +371,19 @@ def seedRequests
           message: "Me quiero inscribir en tu torneo",
           read: false
         )
-
+        Request.create(
+          user_id: Faker::LeagueOfLegends.champion,
+          equipo_id: i+5,
+          request_type: "Equipo_to_equipo",
+          message: "Quiero jugar un partido",
+          equipo_partido_id: i,
+          fecha_partido: Faker::Date.between(2.days.ago, Date.today),
+          ubicacion_id: i,
+          read: false
+        )    
     end
+   
+
 end
 
 
@@ -494,14 +505,14 @@ end
 
 
 
-seedEstadisticas
-seedTeams
-seedTorneos
-seedDeportes
-seedAdmin
-seedTablons
-seedAnuncios
-seedCanchas
-seedUbicacions
-seedPartidos
+# seedEstadisticas
+# seedTeams
+# seedTorneos
+# seedDeportes
+# seedAdmin
+# seedTablons
+# seedAnuncios
+# seedCanchas
+# seedUbicacions
+# seedPartidos
 seedRequests
