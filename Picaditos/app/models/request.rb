@@ -5,7 +5,7 @@ class Request < ApplicationRecord
     belongs_to :ubicacion, optional: true
 
     def self.pendingRequestsEq(equipo_id)
-    @request= Request.where('request_type = ? AND equipo_id = ?' ,"User_to_equipo", equipo_id).length
+    @request= Request.where('request_type = ? AND equipo_id = ?' ,"User_to_equipo", equipo_id).length + Request.where('request_type = ? AND equipo_id = ?' ,"Equipo_to_equipo", equipo_id).length
   end
   
   def self.pendingRequestsTo(torneo_id)
@@ -13,7 +13,7 @@ class Request < ApplicationRecord
   end
     
     def self.requestsForEquipo(equipo_id)
-    @request= Request.where('request_type = ? AND equipo_id = ?' ,"User_to_equipo", equipo_id)
+    @request= Request.where('(request_type = ? AND equipo_id = ?) OR (request_type = ? AND equipo_id = ?)' ,"User_to_equipo", equipo_id, "Equipo_to_equipo", equipo_id)
   end
   def self.requestsForTorneo(torneo_id)
     @request= Request.where('request_type = ? AND torneo_id = ?' ,"Equipo_to_torneo", torneo_id)
