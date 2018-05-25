@@ -20,6 +20,7 @@ class Torneo < ApplicationRecord
     belongs_to :deporte, optional: true
     belongs_to :ubicacion, optional: true
     has_and_belongs_to_many :equipos, optional: true
+    has_many :partidos
     validates :fecha, presence: {with: true, message: "Ingrese la fecha"}
 
     #Queries

@@ -353,7 +353,7 @@ end
 
 def seedRequests
   print("================= SeedingDB:  Creating Requests =======================\n")
-  for i in 0..4 do
+  for i in 1..4 do
     Request.create(
       user_id: Faker::LeagueOfLegends.champion,
       equipo_id: i,
@@ -362,7 +362,7 @@ def seedRequests
       read: false
     )
     end
-    for i in 0..4 do
+    for i in 1..4 do
 
         Request.create(
           equipo_id: i,
@@ -371,8 +371,19 @@ def seedRequests
           message: "Me quiero inscribir en tu torneo",
           read: false
         )
-
+        Request.create(
+          user_id: Faker::LeagueOfLegends.champion,
+          equipo_id: i+5,
+          request_type: "Equipo_to_equipo",
+          message: "Quiero jugar un partido",
+          equipo_partido_id: i,
+          fecha_partido: Faker::Date.between(2.days.ago, Date.today),
+          ubicacion_id: i,
+          read: false
+        )    
     end
+   
+
 end
 
 
@@ -474,7 +485,7 @@ def seedPartidos
       marcador_local: Faker::Number.between(0, 5),
       marcador_visitante: Faker::Number.between(0, 5),
       fecha: Faker::Date.between(2.days.ago, Date.today),
-      jugado: true
+      jugado: false
     )
   end
 
@@ -487,21 +498,36 @@ def seedPartidos
       marcador_local: 0,
       marcador_visitante: 0,
       fecha: Faker::Date.between(2.days.ago, Date.today),
-      jugado: false
+      jugado: true
     )
   end
-end
+  
+    for i in 1..5 do
+    Partido.create(
+        torneo_id: i,
+        deporte_id: 2,
+        ubicacion_id: i,
+        equipo_local_id: i+1,
+        equipo_visitante_id: i+2,
+        marcador_local: 0,
+        marcador_visitante: 0,
+        fecha: Faker::Date.between(2.days.ago, Date.today),
+        jugado: false
+      )
+    end
+  end
 
 
 
-seedEstadisticas
-seedTeams
-seedTorneos
-seedDeportes
-seedAdmin
-seedTablons
-seedAnuncios
-seedCanchas
-seedUbicacions
+
+# seedEstadisticas
+# seedTeams
+# seedTorneos
+# seedDeportes
+# seedAdmin
+# seedTablons
+# seedAnuncios
+# seedCanchas
+# seedUbicacions
 seedPartidos
-seedRequests
+# seedRequests
