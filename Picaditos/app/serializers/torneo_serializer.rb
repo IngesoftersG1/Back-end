@@ -1,6 +1,7 @@
 class TorneoSerializer < ActiveModel::Serializer
-  attributes :id, :fecha, :premio, :organizador_name , :nombre, :solicitudes, :solicitudes_pendientes
+  attributes :id, :fecha, :premio, :organizador_name , :nombre, :solicitudes, :solicitudes_pendientes, :comenzado
   has_many :equipos
+  has_many :partidos
   has_one :deporte
 
   def solicitudes

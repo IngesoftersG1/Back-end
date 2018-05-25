@@ -2,6 +2,7 @@ class PartidoSerializer < ActiveModel::Serializer
   attributes :id, :fecha, :ubicacion_id, :equipo_local_id, :equipo_visitante_id, :marcador_local, :marcador_visitante, :jugado, :info_equipos, :pending, :pending_equipo
   has_one :deporte
   has_one :ubicacion
+  has_one :torneo
 
   def info_equipos
     nombres_equipos = []
