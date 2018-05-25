@@ -1,5 +1,5 @@
 class EquipoSerializer < ActiveModel::Serializer
-  attributes :id, :nombre, :nivel, :capitan_name, :calificacion, :deporte_id, :partidos, :solicitudes, :solicitudes_pendientes
+  attributes :id, :nombre, :nivel, :capitan_name, :calificacion, :deporte_id, :partidos, :solicitudes_equipo, :solicitudes_usuario, :solicitudes_pendientes
   
   has_many :users
   has_one :deporte
@@ -28,11 +28,26 @@ class EquipoSerializer < ActiveModel::Serializer
 
   end
   
-  def solicitudes
-     solicitudes=Request.requestsForEquipo(object.id)
+  def solicitudes_usuario
+     solicitudes=Request.requestsForEquipoFromUser(object.id)
      
      return solicitudes
   
+  end
+
+  def solicitudes_equipo
+    solicitudes=[]
+    solicitudes_a=Request.requestsForEquipoFromEquipo(object.id)
+    solicitudes_a.each do |solicitud|
+      
+      equipo=Equipo.find(solicitud.equipo_partido_id)
+      solicitud_equipo=[]
+      solicitud_equipo.push(solicitud)
+      solicitud_equipo.push(equipo)
+
+      solicitudes.push(solicitud_equipo)
+    end 
+    return solicitudes
   end
   
   
