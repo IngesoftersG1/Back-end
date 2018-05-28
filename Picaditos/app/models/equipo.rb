@@ -66,6 +66,11 @@ class Equipo < ApplicationRecord
     def self.getPartidosPending(equipo_id)
       @equipo = Partido.where("pending = ? AND pending_equipo = ?",true,equipo_id).length
     end
+    
+    def self.getNumeroJugadores(equipo_id)
+      @equipo =  EquiposUsers.where("equipo_id = ?",equipo_id).length
+    end
+
 
 
 end

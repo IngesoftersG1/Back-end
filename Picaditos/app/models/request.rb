@@ -23,4 +23,15 @@ class Request < ApplicationRecord
   def self.requestsForTorneo(torneo_id)
     @request= Request.where('request_type = ? AND torneo_id = ?' ,"Equipo_to_torneo", torneo_id)
   end
-end
+  
+  def self.requestsForUserFromEquipo(user_id)
+    @request= Request.where('(request_type = ? AND user_id = ?)' ,"Equipo_to_user", user_id)
+  end
+  
+  def self.pendingRequestsUser(user_id)
+    @request= Request.where('(request_type = ? AND user_id = ?)' ,"Equipo_to_user", user_id).length
+  end
+  
+end 
+
+  

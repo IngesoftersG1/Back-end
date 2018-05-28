@@ -522,14 +522,14 @@ def seedPartidos
 
 
 
-# seedEstadisticas
-# seedTeams
-# seedTorneos
-# seedDeportes
-# seedAdmin
-# seedTablons
-# seedAnuncios
-# seedCanchas
-# seedUbicacions
+seedEstadisticas
+seedTeams
+seedTorneos
+seedDeportes
+seedAdmin
+seedTablons
+seedAnuncios
+seedCanchas
+seedUbicacions
 seedPartidos
-# seedRequests
+seedRequests
