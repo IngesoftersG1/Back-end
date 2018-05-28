@@ -1,5 +1,6 @@
 class EquipoSerializer < ActiveModel::Serializer
-  attributes :id, :nombre, :nivel, :capitan_name, :calificacion, :deporte_id, :partidos, :solicitudes_equipo, :solicitudes_usuario, :solicitudes_pendientes, :partidos_pending
+  attributes :id, :nombre, :nivel, :capitan_name, :calificacion, :deporte_id, :partidos, :solicitudes_equipo, :solicitudes_usuario, :solicitudes_pendientes, :partidos_pending, :numero_jugadores
+  
   
   has_many :users
   has_one :deporte
@@ -70,6 +71,13 @@ class EquipoSerializer < ActiveModel::Serializer
      solicitudes_pendientes= Request.pendingRequestsEq(object.id)
      
      return solicitudes_pendientes
+  
+  end
+  
+   def numero_jugadores
+     num_jug=Equipo.getNumeroJugadores(object.id)
+     
+     return num_jug
   
   end
   
