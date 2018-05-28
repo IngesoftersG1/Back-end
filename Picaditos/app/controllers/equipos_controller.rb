@@ -40,6 +40,10 @@ class EquiposController < ApplicationController
 
     if @equipo.save
       render :show, status: :created, location: @equipo
+        EquiposUsers.create(
+        user_id: params[:capitan_name] ,
+        equipo_id: @equipo.id
+        )
     else
       render json: @equipo.errors, status: :unprocessable_entity
     end
