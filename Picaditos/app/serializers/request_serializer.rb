@@ -15,6 +15,7 @@ class RequestSerializer < ActiveModel::Serializer
   def equipo_partido
     if(object.request_type=="Equipo_to_equipo")
       equipo=Equipo.find(object.equipo_partido_id)
+      #equipo=Equipo.find(object.equipo_id)
       return equipo 
     else
       return []
