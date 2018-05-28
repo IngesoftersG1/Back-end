@@ -56,7 +56,9 @@ class RequestsController < ApplicationController
         :user_id,
         :equipo_id,
         :torneo_id,
-        :message 
+        :equipo_partido_id,
+        :message,
+        :fecha_partido
         )
     end
 end

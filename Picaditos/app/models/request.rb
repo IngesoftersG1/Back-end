@@ -13,7 +13,7 @@ class Request < ApplicationRecord
   end
     
     def self.requestsForEquipoFromEquipo(equipo_id)
-    @request= Request.where('(request_type = ? AND equipo_id = ?)', "Equipo_to_equipo", equipo_id)
+    @request= Request.where('(request_type = ? AND equipo_partido_id = ?)', "Equipo_to_equipo", equipo_id)
   end
 
   def self.requestsForEquipoFromUser(equipo_id)

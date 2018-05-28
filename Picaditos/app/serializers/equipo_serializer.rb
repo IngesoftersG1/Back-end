@@ -54,7 +54,8 @@ class EquipoSerializer < ActiveModel::Serializer
     solicitudes_a=Request.requestsForEquipoFromEquipo(object.id)
     solicitudes_a.each do |solicitud|
       
-      equipo=Equipo.find(solicitud.equipo_partido_id)
+      #equipo=Equipo.find(solicitud.equipo_partido_id)
+      equipo=Equipo.find(solicitud.equipo_id)
       solicitud_equipo=[]
       solicitud_equipo.push(solicitud)
       solicitud_equipo.push(equipo)
