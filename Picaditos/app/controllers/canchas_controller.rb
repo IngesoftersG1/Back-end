@@ -15,6 +15,17 @@ class CanchasController < ApplicationController
     render json: @cancha, status: :ok
   end
 
+  def numFields
+    @cancha = Cancha.countFields()
+    render json: @cancha, status: :ok
+  end
+
+  def numFieldsAvailable
+    @cancha = Cancha.searchIfAvailable()
+    render json: @cancha, status: :ok
+  end
+
+
   # POST /canchas
   # POST /canchas.json
   def create
@@ -41,6 +52,11 @@ class CanchasController < ApplicationController
   # DELETE /canchas/1.json
   def destroy
     @cancha.destroy
+  end
+
+  def canchas_disp
+    @cancha = Cancha.searchIfAvailable(@cancha.disponibilidad)
+    render json: @cancha, status: :ok
   end
 
   private

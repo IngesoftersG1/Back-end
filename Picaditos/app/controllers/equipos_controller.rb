@@ -8,18 +8,29 @@ class EquiposController < ApplicationController
     @equipos = Equipo.all
     render json: @equipos, status: :ok
   end
-  
+
   def my_team
     @user = User.find(params[:user_name])
     @equipo = Equipo.searchByCaptain(@user.user_name)
+    render json: @equipo, status: :ok
+  end
+
+  def numTeams
+    @equipo = Equipo.countTeams()
     render json: @equipo, status: :ok 
   end
-  
+
   # GET /equipos/1
   # GET /equipos/1.json
   def show
     @equipo= (set_equipo)
     render json: @equipo, status: :ok
+  end
+
+  def get_id
+    @equipo = Equipo.find(params[:id])
+    render json: @equipo, status: :ok
+
   end
 
   # POST /equipos
@@ -29,6 +40,10 @@ class EquiposController < ApplicationController
 
     if @equipo.save
       render :show, status: :created, location: @equipo
+        EquiposUsers.create(
+        user_id: params[:capitan_name] ,
+        equipo_id: @equipo.id
+        )
     else
       render json: @equipo.errors, status: :unprocessable_entity
     end
@@ -51,16 +66,27 @@ class EquiposController < ApplicationController
     @equipo = set_equipo,
     @equipo.destroy
   end
+  
+  def name_equipo
+    @equipo = Equipo.searchByName(params[:name])
+    render json: @equipo, status: :ok 
 
+  end
+  def equipo_deporte
+    @equipo = Equipo.getEquipoByCapitanAndDeporte(params[:capitan_name],params[:deporte_id])
+    render json: @equipo, status: :ok 
+
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipo
-      @equipo = Equipo.find_by(nombre:params[:nombre], deporte_id:params[:deporte_id])
+      @equipo = Equipo.find_by(nombre:params[:nombre])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipo_params
-      params.permit(:id, 
+      params.permit(:id,
       :nombre,
       :nivel,
       :deporte_id,

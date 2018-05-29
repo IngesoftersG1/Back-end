@@ -15,13 +15,18 @@ class PartidosController < ApplicationController
     render json: @partido, status: :ok
   end
 
+  def numMatches
+    @partido= Partido.playedMatches()
+    render json: @partido, status: :ok
+  end
+
   # POST /partidos
   # POST /partidos.json
   def create
     @partido = Partido.new(partido_params)
 
     if @partido.save
-      render :show, status: :created, location: @partido
+      
     else
       render json: @partido.errors, status: :unprocessable_entity
     end
@@ -31,7 +36,7 @@ class PartidosController < ApplicationController
   # PATCH/PUT /partidos/1.json
   def update
     if @partido.update(partido_params)
-      render :show, status: :ok, location: @partido
+      
     else
       render json: @partido.errors, status: :unprocessable_entity
     end
@@ -55,7 +60,13 @@ class PartidosController < ApplicationController
       :deporte_id,
       :usuario_id,
       :ubicacion_id,
-      :equipo_id
+      :pending,
+      :jugado,
+      :pending_equipo,
+      :marcador_local,
+      :marcador_visitante,
+      :equipo_local_id, 
+      :equipo_visitante_id
       )
     end
 end

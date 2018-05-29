@@ -19,13 +19,13 @@ class UsersController < ApplicationController
   def show
     @user= set_user
     render json: @user, status: :ok
-   
+
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)   
+    @user = User.new(user_params)
     respond_to do |format|
       if @user.save
         # Tell the User1Mailer to send a welcome email after save
@@ -42,16 +42,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user = User.find(params[:user_name])
     if @user.update(user_params)
       # Tell the User1Mailer to send a password email after save
-      User1Mailer.password_email(@user).deliver_now
-      render :show, status: :ok, location: @user
+      # User1Mailer.password_email(@user).deliver_now
+      render status: :ok
     else
       render json: @user.errors, status: :unprocessable_entity
     end
   end
-  
- 
+
+  def numUsers
+    @user = User.countUsers()
+    render json: @user, status: :ok
+  end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -63,7 +67,7 @@ class UsersController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:user_name])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -78,7 +82,8 @@ class UsersController < ApplicationController
       :page,
       :password,
       :password_confirmation,
-      :picture
+      :picture,
+      :confirmed
       )
     end
 end

@@ -54,8 +54,7 @@ class UbicacionsController < ApplicationController
       params.permit( :calle_principal,
       :calle_secundaria,
       :localidad,
-      :ciudad,
-      :nombre
+      :ciudad
       )
     end
 end

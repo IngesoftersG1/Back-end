@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417222128) do
+ActiveRecord::Schema.define(version: 20180525145312) do
 
   create_table "anuncios", force: :cascade do |t|
     t.string "tipo"
+    t.integer "equipo_id"
+    t.string "user_id"
+    t.integer "torneo_id"
     t.string "enlace"
     t.date "fecha_inicio"
     t.date "fecha_fin"
     t.text "descripcion"
+    t.text "titulo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_id"
     t.integer "tablon_id"
     t.index ["tablon_id"], name: "index_anuncios_on_tablon_id"
     t.index ["user_id"], name: "index_anuncios_on_user_id"
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 20180417222128) do
   end
 
   create_table "equipos_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.string "user_id", null: false
     t.integer "equipo_id", null: false
     t.index ["equipo_id"], name: "index_equipos_users_on_equipo_id"
     t.index ["user_id"], name: "index_equipos_users_on_user_id"
@@ -101,6 +104,7 @@ ActiveRecord::Schema.define(version: 20180417222128) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
   end
 
   create_table "mensajes", force: :cascade do |t|
@@ -111,6 +115,7 @@ ActiveRecord::Schema.define(version: 20180417222128) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "usuario_2_name"
+    t.boolean "read"
     t.index ["user_id"], name: "index_mensajes_on_user_id"
     t.index ["usuario_2_name"], name: "index_mensajes_on_usuario_2_name"
   end
@@ -118,15 +123,35 @@ ActiveRecord::Schema.define(version: 20180417222128) do
   create_table "partidos", force: :cascade do |t|
     t.date "fecha"
     t.integer "ubicacion_id"
-    t.integer "equipo_id"
     t.integer "deporte_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "played"
+    t.integer "equipo_local_id"
+    t.integer "equipo_visitante_id"
+    t.integer "marcador_local"
+    t.integer "marcador_visitante"
+    t.boolean "jugado"
+    t.boolean "pending"
+    t.integer "torneo_id"
+    t.integer "pending_equipo"
     t.index ["deporte_id"], name: "index_partidos_on_deporte_id"
-    t.index ["equipo_id"], name: "index_partidos_on_equipo_id"
     t.index ["ubicacion_id"], name: "index_partidos_on_ubicacion_id"
-    t.index ["user_id"], name: "index_partidos_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "equipo_id"
+    t.integer "torneo_id"
+    t.string "request_type"
+    t.boolean "read"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "fecha_partido"
+    t.integer "ubicacion_id"
+    t.integer "equipo_partido_id"
+    t.integer "partido_id"
   end
 
   create_table "tablons", force: :cascade do |t|
@@ -145,6 +170,8 @@ ActiveRecord::Schema.define(version: 20180417222128) do
     t.string "organizador_name"
     t.integer "ubicacion_id"
     t.string "nombre"
+    t.string "user_id"
+    t.boolean "comenzado"
     t.index ["deporte_id"], name: "index_torneos_on_deporte_id"
     t.index ["organizador_name"], name: "index_torneos_on_organizador_name"
     t.index ["ubicacion_id"], name: "index_torneos_on_ubicacion_id"
@@ -174,6 +201,7 @@ ActiveRecord::Schema.define(version: 20180417222128) do
     t.string "password_digest"
     t.boolean "admin"
     t.string "picture"
+    t.boolean "confirmed"
     t.index ["ubicacion_id"], name: "index_users_on_ubicacion_id"
   end
 

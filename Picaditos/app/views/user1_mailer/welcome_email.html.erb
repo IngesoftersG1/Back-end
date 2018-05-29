@@ -11,8 +11,9 @@
         <td style="padding: 20px 0 30px 0;">
           <table align="center" border="1" bordercolor="gray" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
             <tr>
-              <td align="center" bgcolor="#59ff33" style="padding: 40px 0 30px 0; font-size: 24px; font-family: Arial, sans-serif; color: #153643;">
-                <b>Bienvenido a Picaditos.com, <%= @user.nombres %>.</b>
+              <td align="center" bgcolor="#C8C8C8" style="padding: 40px 0 30px 0; font-size: 24px; font-family: Arial, sans-serif; color: #153643;">
+                <b><%= @user.nombres %>, Bienvenido a Picaditos!.</b></br>
+                <b>Por favor verifica tu email</b></br>
               </td>
             </tr>
             <tr>
@@ -20,13 +21,13 @@
                 Te has registrado correctamente en Picaditos.com,<br/>
                 Tu nombre de usuario es: <%= @user.user_name %>.<br/>
                 <br/>
-                Para ingresar a nuestro sitio, por favor sigue este link: <%= @url %>.<br/>
+                Para verificar tu dirección email, por favor sigue este enlace: <a href='<%= @url %>'>Picaditos!</a>.<br/>
                 <br/>
                 Gracias por unirte, ¡Te esperamos en la cancha!
               </td>
             </tr>
             <tr>
-              <td bgcolor="#ee4c50" style="padding: 30px 30px 30px 30px;">
+              <td bgcolor="#000000" style="padding: 30px 30px 30px 30px;">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                   <tr>
                     <td width="75%" style="color: #ffffff; font-family: Arial, sans-serif; font-size: 14px;">

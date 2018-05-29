@@ -30,6 +30,11 @@ class Equipo < ApplicationRecord
       @equipo = Equipo.where("nivel = ?",level).pluck(:nombre, :capitan_name, :calificacion)
     end
 
+    #Conocer el numero de equipos participantes
+    def self.countTeams()
+      @equipo = Equipo.count
+    end
+
     #Buscar los equipos que compiten en el deporte "sport"
     def self.searchTeamsbySport(sport)
       @equipo = Equipo.joins(:deporte).where("deportes.nombre LIKE ?",sport).pluck(:nombre)
@@ -40,9 +45,32 @@ class Equipo < ApplicationRecord
       @equipo = Equipo.where("capitan_name LIKE ?","#{name}%").select("nombre,nivel,calificacion,capitan_name,deporte_id").all.to_a
     end
 
+     def self.searchByName(name)
+      @equipo = Equipo.where("nombre LIKE ?","%#{name}%")
+    end
+
+
     #Buscar el equipo cuya calificación está entre el rango "min" y "max" y compite en el deporte "sport"
     def self.searchByQualification(min,max,sport)
       @equipo = Equipo.joins(:deporte).where("calificacion >= ? AND calificacion <= ? AND deportes.nombre = ?",min,max,sport).pluck(:nombre)
     end
+
+    def self.getNameById(id)
+      @equipo = Equipo.where("id = ?",id).select("nombre")
+    end
+
+    def self.getEquipoByCapitanAndDeporte(cap, dep)
+      @equipo = Equipo.where("capitan_name = ? AND deporte_id = ?",cap,dep)
+    end
+
+    def self.getPartidosPending(equipo_id)
+      @equipo = Partido.where("pending = ? AND pending_equipo = ?",true,equipo_id).length
+    end
+    
+    def self.getNumeroJugadores(equipo_id)
+      @equipo =  EquiposUsers.where("equipo_id = ?",equipo_id).length
+    end
+
+
 
 end

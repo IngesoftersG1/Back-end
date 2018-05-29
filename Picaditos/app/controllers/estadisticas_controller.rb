@@ -1,6 +1,9 @@
 class EstadisticasController < ApplicationController
   before_action :set_estadistica, only: [:show, :update, :destroy]
 
+
+  
+
   # GET /estadisticas
   # GET /estadisticas.json
   def index
@@ -8,6 +11,11 @@ class EstadisticasController < ApplicationController
     render json: @estadisticas, status: :ok
   end
 
+  def my_stats
+    @user = User.find(params[:user_name])
+    @estadistica = Estadistica.searchUserStats(@user.user_name)
+    render json: @estadistica, status: :ok
+  end
   # GET /estadisticas/1
   # GET /estadisticas/1.json
   def show
@@ -32,7 +40,7 @@ class EstadisticasController < ApplicationController
   def update
     if @estadistica.update(estadistica_params)
       # Tell the User1Mailer to send a estadisticas show email after update
-      User1Mailer.estadisticas_show(@estadistica.user_id).deliver_now
+      User1Mailer.estadisticas_show(@estadistica.user_id).deliver_later(wait: 1.hour)
       render :show, status: :ok, location: @estadistica
     else
       render json: @estadistica.errors, status: :unprocessable_entity

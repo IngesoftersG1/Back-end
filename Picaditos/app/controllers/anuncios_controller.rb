@@ -15,12 +15,17 @@ class AnunciosController < ApplicationController
     render json: @anuncio, status: :ok
   end
 
+  def numAnnounces
+    @anuncio = Anuncio.countAnnounces()
+    render json: @anuncio, status: :ok
+  end
+
   # POST /anuncios
   # POST /anuncios.json
   def create
-    
+
     @anuncio = Anuncio.new(anuncio_params)
-    
+
     if @anuncio.save
       render :show, status: :created, location: @anuncio
     else
@@ -44,6 +49,12 @@ class AnunciosController < ApplicationController
   def destroy
     @anuncio.destroy
   end
+  
+  def search_name
+    @anuncio = Anuncio.searchByName(params[:name])
+    render json: @anuncio, status: :ok 
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -53,11 +64,11 @@ class AnunciosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anuncio_params
-      params.permit(:id, 
-        :tipo, 
+      params.permit(:id,
+        :tipo,
       :enlace,
       :fecha_inicio,
-      :fecha_fin, 
+      :fecha_fin,
       :descripcion,
       :tablon_id,
       :autor_name

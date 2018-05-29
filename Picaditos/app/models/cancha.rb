@@ -20,9 +20,14 @@ class Cancha < ApplicationRecord
     validates :ubicacion_id, presence: true
 
     #Queries
+    #Saber cuantas canchas hay
+    def self.countFields()
+      @cancha = Cancha.count
+    end
+
     #Buscar todas las canchas disponibles
-    def self.searchIfAvailable(value)
-      @cancha = Cancha.where("disponibilidad = ?", value).pluck(:nombre, :precio, :calificacion)
+    def self.searchIfAvailable()
+      @cancha = Cancha.where("disponibilidad LIKE ?",true).count
     end
 
     #Buscar las canchas cuyo precio está en un rango entre "min" y max

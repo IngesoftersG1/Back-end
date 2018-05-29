@@ -15,6 +15,78 @@ class TorneosController < ApplicationController
     render json: @torneo, status: :ok
   end
 
+  def get_id
+    @torneo = Torneo.find(params[:id])
+    render json: @torneo, status: :ok
+  end
+
+  def numTournaments
+    @torneo = Torneo.countTournaments()
+    render json: @torneo, status: :ok
+  end
+
+  def todosContraTodos
+  
+    @torneo = Torneo.find(params[:id])
+    
+
+    if (!@torneo.comenzado)
+      num_equipos = Torneo.countEquiposInATournament(params[:id])
+      @id_equipos= Torneo.getIdsFromEquiposInATournament(params[:id])
+      if (params[:ida_vuelta])
+        for i in 0..(num_equipos-1) do
+          for j in 0..(num_equipos-1) do
+            if (j!=i)
+                Partido.create(
+                    torneo_id: params[:id],
+                    deporte_id: @torneo.deporte_id,
+                    ubicacion_id: i,
+                    equipo_local_id: @id_equipos[i].equipo_id,
+                    equipo_visitante_id: @id_equipos[j].equipo_id,
+                    marcador_local: 0,
+                    marcador_visitante: 0,
+                    fecha: Faker::Date.between(2.days.ago, Date.today),
+                    jugado: false
+                )
+            end
+          end     
+        end
+        @torneo.comenzado=true
+        if @torneo.save
+          render json: @torneo, status: :ok 
+        else
+          render json: @torneo.errors, status: :unprocessable_entity
+        end 
+      else
+        for i in 0..(num_equipos-1) do
+          for j in i..(num_equipos-1) do
+            if (j!=i)
+                Partido.create(
+                    torneo_id: params[:id],
+                    deporte_id: @torneo.deporte_id,
+                    ubicacion_id: i,
+                    equipo_local_id: @id_equipos[i].equipo_id,
+                    equipo_visitante_id: @id_equipos[j].equipo_id,
+                    marcador_local: 0,
+                    marcador_visitante: 0,
+                    fecha: Faker::Date.between(2.days.ago, Date.today),
+                    jugado: false
+                )
+            end
+          end
+          
+        end
+        @torneo.comenzado=true
+          if @torneo.save
+            render json: @torneo, status: :ok 
+          else
+            render json: @torneo.errors, status: :unprocessable_entity
+          end 
+      end
+  else
+    render json: @torneo.errors, status: :unprocessable_entity
+  end
+  end
   # POST /torneos
   # POST /torneos.json
   def create
@@ -42,16 +114,24 @@ class TorneosController < ApplicationController
   def destroy
     @torneo.destroy
   end
-  
+
   def my_tournaments
     @user = User.find(params[:user_name])
     @torneo = Torneo.searchByOrganizador(@user.user_name)
-    render json: @equipo, status: :ok 
+    render json: @torneo, status: :ok
   end
+
+  def name_tournaments
+    @torneo = Torneo.searchByName(params[:name])
+    render json: @torneo, status: :ok
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_torneo
-      @torneo = Torneo.find(params[:id])
+      @torneo = Torneo.find_by(nombre: params[:nombre])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -61,7 +141,8 @@ class TorneosController < ApplicationController
       :deporte_id,
       :organizador_name,
       :nombre,
-      :ubicacion_id
+      :ubicacion_id,
+      :ida_vuelta
       )
     end
 end
