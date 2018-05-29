@@ -33,11 +33,10 @@ class EquiposTorneosController < ApplicationController
       end
     end
   
-    # DELETE /equipos/1
-    # DELETE /equipos/1.json
-    def destroy
-      @equipo = set_equipo,
-      @equipo.destroy
+   
+    def erase
+      @equipo_torneo = set_equipo_torneo,
+      @equipo_torneo.destroy
     end
     
     def name_equipo
@@ -48,7 +47,9 @@ class EquiposTorneosController < ApplicationController
     
     private
       # Use callbacks to share common setup or constraints between actions.
-  
+      def set_equipo_torneo
+        @equipo_torneo = EquiposTorneos.find_by(equipo_id: params[:equipo_id], torneo_id: params[:torneo_id])
+      end
       
       # Never trust parameters from the scary internet, only allow the white list through.
       def equipos_torneos_params

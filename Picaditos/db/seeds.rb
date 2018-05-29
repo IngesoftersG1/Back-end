@@ -504,19 +504,7 @@ def seedPartidos
     )
   end
   
-    for i in 1..5 do
-    Partido.create(
-        torneo_id: i,
-        deporte_id: 2,
-        ubicacion_id: i,
-        equipo_local_id: i+1,
-        equipo_visitante_id: i+2,
-        marcador_local: 0,
-        marcador_visitante: 0,
-        fecha: Faker::Date.between(2.days.ago, Date.today),
-        jugado: false
-      )
-    end
+   
   end
 
 

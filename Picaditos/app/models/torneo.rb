@@ -28,7 +28,13 @@ class Torneo < ApplicationRecord
     def self.countTournaments()
         @torneo = Torneo.count
     end
-
+    
+    def self.countEquiposInATournament(torneo_id)
+      @torneo = EquiposTorneos.where("torneo_id = ?",torneo_id).length
+    end
+    def self.getIdsFromEquiposInATournament(torneo_id)
+      @torneo = EquiposTorneos.where("torneo_id = ?",torneo_id).select("equipo_id")
+    end
     #Buscar los torneos que se van a realizar entre el rango de fechas "init" y "end_"
     def self.searchByDate(init,end_)
       @torneo = Torneo.where("fecha >= ? AND fecha <= ?",init,end_).select("nombre AS 'Nombre del torneo:', fecha AS 'Fecha de Realización:', premio AS 'Recompensa:', organizador_name AS 'Organizador:',calificacion AS 'Calificación de los usuarios:'").all.to_a

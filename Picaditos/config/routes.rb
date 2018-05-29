@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   get "mensajes/my_messages", to: "mensajes#my_messages"
   get "equipos/equipo_id", to: "equipos#get_id"
   get "torneos/torneo_id", to: "torneos#get_id"
-
+  post "torneos/empezar", to: "torneos#todosContraTodos"
+  post "equipos_torneos/borrar", to: "equipos_torneos#erase"
   #grafico admin
   get "users/num_users", to: "users#numUsers"
   get "anuncios/num_announces", to: "anuncios#numAnnounces"
